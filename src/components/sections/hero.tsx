@@ -4,13 +4,11 @@ import { FiArrowRight, FiGithub, FiLinkedin } from 'react-icons/fi';
 import { MdOutlineFileDownload, MdWhatsapp } from 'react-icons/md';
 import { Container } from '../ui/container';
 
-import Image from 'next/image';
-
 export function Hero() {
   return (
     <section id='hero' className='relative min-h-[100svh]'>
       <Container>
-        <Image src='/assets/hero/hero-avatar.gif' alt='Yasmin Alves' width={500} height={500} />
+        <video src='/assets/hero/iayasmin.mp4' aria-hidden='true' autoPlay muted loop playsInline width={500} height={500} />
         <div>
           <h1>
             Yasmin<span>Alves</span>
