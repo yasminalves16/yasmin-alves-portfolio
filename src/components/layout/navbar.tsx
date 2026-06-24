@@ -1,3 +1,4 @@
+import { ThemeToggle } from '../ui/theme-toggle';
 export function Navbar() {
   return (
     <nav>
@@ -17,6 +18,8 @@ export function Navbar() {
           <a href='#contact'>Contato</a>
         </li>
       </ul>
+
+      <ThemeToggle />
     </nav>
   );
 }
