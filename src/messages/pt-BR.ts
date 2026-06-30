@@ -17,9 +17,8 @@ export default {
   sections: {
     hero: {
       title: 'Yasmin Alves',
-      subtitle: 'Desenvolvedora Front-End',
-      description:
-        'Transformo necessidades de negócio em soluções tecnológicas, conectando pessoas, processos e tecnologia para entregar resultados reais.',
+      subtitle: '< Desenvolvedora Front-End com foco em produto >',
+      description: 'Desenvolvedora Front-End com foco em produto',
       paragraphs: [
         'Experiência em gestão de projetos, metodologias ágeis e desenvolvimento web com React, JavaScript e TypeScript.'
       ]
@@ -39,23 +38,22 @@ export default {
       ],
       pillars: [
         {
-          title: 'Tecnologia',
+          title: 'Clean Code',
           description:
-            'Desenvolvimento web com React, JavaScript e TypeScript, criando soluções funcionais e escaláveis.'
+            'Estruturo aplicações com foco em componentização, organização e boas práticas, facilitando manutenção e evolução do projeto.'
         },
         {
-          title: 'Gestão de Projetos',
-          description: 'Coordenação de equipes utilizando Scrum e Kanban para entregas constantes de valor.'
+          title: 'Colaboração',
+          description:
+            'Experiência em times ágeis, atuando na organização de tarefas, condução de dailies e acompanhamento das entregas.'
         },
         {
-          title: 'Automação',
-          description:
-            'Implementação de soluções em RPA e automação de processos para otimização operacional e redução de custos.'
+          title: 'Performance',
+          description: 'Otimização de aplicações React com foco em carregamento rápido, fluidez e experiência do usuário.'
         },
         {
-          title: 'Visão de Negócio',
-          description:
-            'Conexão estratégica entre necessidades do negócio e soluções tecnológicas, atuando como ponte decisiva.'
+          title: 'Visão de Produto',
+          description: 'Atuação próxima às decisões de produto, conectando necessidades do negócio à implementação técnica.'
         }
       ]
     },
@@ -112,8 +110,9 @@ export default {
         'Estou sempre aberta a discutir novos projetos, ideias criativas ou oportunidades de fazer parte de suas visões.',
       getInTouchTitle: 'Entre em contato',
       getInTouchDescription:
-        'Seja para um projeto freelance, uma posição full-time ou apenas para trocar ideias sobre tecnologia — adoraria ouvir você.',
+        'Seja pra uma oportunidade de colaboração, uma posição full time ou apenas para trocar ideias sobre tecnologia. Adoraria ouvir você!',
       networksTitle: 'Me encontre nas redes',
+      location: 'São José dos Campos, SP',
       formTitle: 'Enviar mensagem',
       formDescription: 'Preencha o formulário abaixo',
       form: {

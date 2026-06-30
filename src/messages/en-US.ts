@@ -17,9 +17,8 @@ export default {
   sections: {
     hero: {
       title: 'Yasmin Alves',
-      subtitle: 'Front-End Developer',
-      description:
-        'I turn business needs into technology solutions, connecting people, processes and technology to deliver real results.',
+      subtitle: '< Frontend Developer with a focus on product >',
+      description: 'Frontend Developer with a focus on product',
       paragraphs: [
         'Experience in project management, agile methodologies and web development with React, JavaScript and TypeScript.'
       ]
@@ -39,20 +38,21 @@ export default {
       ],
       pillars: [
         {
-          title: 'Technology',
-          description: 'Web development with React, JavaScript and TypeScript, building functional and scalable solutions.'
+          title: 'Clean Code',
+          description:
+            'I structure applications with componentization, organization and good practices to ease maintenance and evolution.'
         },
         {
-          title: 'Project Management',
-          description: 'Team coordination using Scrum and Kanban for consistent value delivery.'
+          title: 'Collaboration',
+          description: 'Experience in agile teams: task organization, running dailies and tracking deliveries.'
         },
         {
-          title: 'Automation',
-          description: 'RPA solutions and process automation for operational optimization and cost reduction.'
+          title: 'Performance',
+          description: 'Optimizing React apps for fast loading, smooth UX and a solid user experience.'
         },
         {
-          title: 'Business Vision',
-          description: 'Strategic connection between business needs and technology solutions as a decisive bridge.'
+          title: 'Product mindset',
+          description: 'Working near product decisions, connecting business needs to technical implementation.'
         }
       ]
     },
@@ -109,8 +109,9 @@ export default {
         "I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.",
       getInTouchTitle: 'Get in touch',
       getInTouchDescription:
-        "Whether it's a freelance project, a full-time role or just swapping ideas about technology — I'd love to hear from you.",
+        "Whether it's collaboration, a full-time role or just swapping ideas about technology — I'd love to hear from you!",
       networksTitle: 'Find me online',
+      location: 'São José dos Campos, SP',
       formTitle: 'Send a message',
       formDescription: 'Fill in the form below',
       form: {

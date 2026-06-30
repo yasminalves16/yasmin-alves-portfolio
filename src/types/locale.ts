@@ -3,6 +3,28 @@ export type RichHeadingSegment =
   | { kind: 'text'; value: string }
   | { kind: 'emphasis'; value: string };
 
+export type ContactSectionMessages = {
+  badge: string;
+  heading: RichHeadingSegment[];
+  description: string;
+  getInTouchTitle: string;
+  getInTouchDescription: string;
+  networksTitle: string;
+  location: string;
+  formTitle: string;
+  formDescription: string;
+  form: {
+    nameLabel: string;
+    namePlaceholder: string;
+    emailLabel: string;
+    emailPlaceholder: string;
+    subjectLabel: string;
+    subjectPlaceholder: string;
+    messageLabel: string;
+    messagePlaceholder: string;
+  };
+};
+
 export type LocaleMessages = {
   metadata: {
     title: string;
@@ -59,26 +81,7 @@ export type LocaleMessages = {
       certificationsTitle: string;
       inProgress: string;
     };
-    contact: {
-      badge: string;
-      heading: RichHeadingSegment[];
-      description: string;
-      getInTouchTitle: string;
-      getInTouchDescription: string;
-      networksTitle: string;
-      formTitle: string;
-      formDescription: string;
-      form: {
-        nameLabel: string;
-        namePlaceholder: string;
-        emailLabel: string;
-        emailPlaceholder: string;
-        subjectLabel: string;
-        subjectPlaceholder: string;
-        messageLabel: string;
-        messagePlaceholder: string;
-      };
-    };
+    contact: ContactSectionMessages;
   };
   actions: {
     viewProjects: string;
