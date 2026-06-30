@@ -4,12 +4,14 @@ export default {
   metadata: {
     title: 'Yasmin Alves - Portfolio',
     description:
-      'Portfolio of Yasmin Alves, frontend developer with a focus on product. Explore projects, skills and experience in React, JavaScript and TypeScript.'
+      'Portfolio of Yasmin Alves, front-end developer and project coordinator. Explore projects, experience, education and journey in React, agile management and technology.'
   },
   navigation: {
     hero: 'Home',
     about: 'About',
+    experience: 'Experience',
     projects: 'Projects',
+    education: 'Education',
     contact: 'Contact'
   },
   sections: {
@@ -18,8 +20,7 @@ export default {
       subtitle: '< Frontend Developer with a focus on product >',
       description: 'Frontend Developer with a focus on product',
       paragraphs: [
-        'I build modern interfaces and functional web applications, connecting technology and business needs.',
-        'Experience with React, JavaScript and TypeScript, from structuring projects to delivering real solutions.'
+        'Experience in project management, agile methodologies and web development with React, JavaScript and TypeScript.'
       ]
     },
     about: {
@@ -28,12 +29,12 @@ export default {
         { kind: 'text', value: 'Turning ideas into ' },
         { kind: 'emphasis', value: 'code' }
       ],
+      roleLabel: 'Project Coordinator',
       paragraphs: [
-        "I'm a frontend developer working end-to-end on web applications with React, JavaScript and TypeScript. I have experience structuring projects from technology choices through interface implementation.",
-        'I work closely with product and the team, contributing to requirements, prioritization and delivery planning, as well as facilitating agile ceremonies.',
-        'I also collaborate with backend and mobile on flows and integrations, keeping consistency across application layers.',
-        'I focus on code quality, organization and scalability, aiming for well-structured, maintainable solutions.',
-        "I'm currently expanding into backend with Node.js and Java, growing as a software engineer."
+        'I am a Project Coordinator with experience in team management, agile methodologies and technology solution development. I connect business and technology, leading projects end-to-end.',
+        'I have a technical background in web development with React, JavaScript and TypeScript, which gives me a complete view of projects and helps bridge technical and business teams.',
+        'Experience in automation projects (RPA), process analysis, squad management and technical mentorship, always seeking to deliver value and develop people.',
+        'Currently pursuing a Computer Science degree and specializing in Generative AI and Cloud Computing with Google Cloud and Microsoft Azure certifications.'
       ],
       pillars: [
         {
@@ -55,28 +56,62 @@ export default {
         }
       ]
     },
+    experience: {
+      badge: '02 // experience',
+      title: [
+        { kind: 'text', value: 'Professional ' },
+        { kind: 'emphasis', value: 'Journey' }
+      ]
+    },
     projects: {
-      title: 'Projects',
+      badge: '03 // projects',
+      title: [
+        { kind: 'text', value: 'Featured ' },
+        { kind: 'emphasis', value: 'Projects' }
+      ],
       description:
-        'A selection of projects that showcase my web development skills, from complex applications to simple, effective solutions.',
-      filterLabel: 'Filter by technologies:',
+        'A selection of projects showcasing my experience in project management, team coordination and technology solution development.',
+      filterLabel: 'Filter by technology:',
+      categoryAll: 'All',
+      categoryManagement: 'Management',
+      categoryDevelopment: 'Development',
       featuredTitle: 'Featured projects',
       moreTitle: 'More projects',
       emptyMessage: 'No projects match the selected filters.'
     },
+    media: {
+      badge: '04 // media',
+      title: [
+        { kind: 'text', value: 'Media ' },
+        { kind: 'emphasis', value: 'Recognition' }
+      ],
+      readArticle: 'Read full article',
+      officialPublication: 'official publication'
+    },
+    education: {
+      badge: '05 // education',
+      title: [
+        { kind: 'text', value: 'Education & ' },
+        { kind: 'emphasis', value: 'Certifications' }
+      ],
+      academicTitle: 'Academic Education',
+      certificationsTitle: 'Certifications',
+      inProgress: 'In progress'
+    },
     contact: {
       badge: 'Contact',
       heading: [
-        { kind: 'emphasis', value: 'Together' },
-        { kind: 'text', value: ' on something new?' }
+        { kind: 'text', value: 'Shall we work ' },
+        { kind: 'emphasis', value: 'together' },
+        { kind: 'text', value: '?' }
       ],
       description:
         "I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.",
       getInTouchTitle: 'Get in touch',
       getInTouchDescription:
-        "Whether it's collaboration, a full-time role or just swapping ideas about tech — I'd love to hear from you!",
+        "Whether it's collaboration, a full-time role or just swapping ideas about technology — I'd love to hear from you!",
       networksTitle: 'Find me online',
-      location: 'São José dos Campos, SP, Brazil',
+      location: 'São José dos Campos, SP',
       formTitle: 'Send a message',
       formDescription: 'Fill in the form below',
       form: {
@@ -94,11 +129,14 @@ export default {
   actions: {
     viewProjects: 'View projects',
     downloadCv: 'Download CV',
+    downloadPortfolioCoordenadora: 'Download Project Coordinator Portfolio',
     viewDetails: 'View details',
     sendMessage: 'Send message',
     backToTop: 'Back to top',
     clearFilters: 'Clear filters',
-    viewMoreOnGithub: 'See more on GitHub'
+    viewMoreOnGithub: 'See more on GitHub',
+    heroCode: 'Code',
+    heroPreview: 'Preview'
   },
   a11y: {
     siteLogo: 'Yasmin Alves — go to home',
@@ -111,6 +149,8 @@ export default {
     openWhatsapp: 'Open WhatsApp',
     sendEmail: 'Send email',
     projectDetailsPrefix: 'View project details for',
-    moreProjectsOnGithub: 'See more projects on GitHub yasminalves16'
+    moreProjectsOnGithub: 'See more projects on GitHub yasminalves16',
+    downloadDocumentPrefix: 'Download document',
+    externalCredential: 'Open external credential'
   }
 } satisfies LocaleMessages;
