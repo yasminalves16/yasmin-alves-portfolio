@@ -4,22 +4,24 @@ export default {
   metadata: {
     title: 'Yasmin Alves - Portfólio',
     description:
-      'Portfólio de Yasmin Alves, desenvolvedora front-end com foco em produto. Explore projetos, habilidades e experiência em React, JavaScript e TypeScript.'
+      'Portfólio de Yasmin Alves, desenvolvedora front-end e coordenadora de projetos. Explore projetos, experiência, formação e trajetória em React, gestão ágil e tecnologia.'
   },
   navigation: {
     hero: 'Início',
     about: 'Sobre',
+    experience: 'Experiência',
     projects: 'Projetos',
+    education: 'Formação',
     contact: 'Contato'
   },
   sections: {
     hero: {
       title: 'Yasmin Alves',
-      subtitle: '< Desenvolvedora Front-End com foco em produto >',
-      description: 'Desenvolvedora Front-End com foco em produto',
+      subtitle: 'Desenvolvedora Front-End',
+      description:
+        'Transformo necessidades de negócio em soluções tecnológicas, conectando pessoas, processos e tecnologia para entregar resultados reais.',
       paragraphs: [
-        'Construo interfaces modernas e aplicações web funcionais, conectando tecnologia e necessidades de negócio.',
-        'Experiência com React, JavaScript e TypeScript, atuando desde a estruturação até a entrega de soluções reais.'
+        'Experiência em gestão de projetos, metodologias ágeis e desenvolvimento web com React, JavaScript e TypeScript.'
       ]
     },
     about: {
@@ -28,42 +30,76 @@ export default {
         { kind: 'text', value: 'Transformando ideias em ' },
         { kind: 'emphasis', value: 'código' }
       ],
+      roleLabel: 'Coordenadora de Projetos',
       paragraphs: [
-        'Sou desenvolvedora front-end com atuação end-to-end na construção de aplicações web utilizando React, JavaScript e TypeScript. Tenho experiência na estruturação de projetos desde a definição de tecnologias até a implementação das interfaces.',
-        'Atuo próxima ao produto e ao time, participando do levantamento de requisitos, definição de prioridades e organização das entregas, além da condução de cerimônias ágeis.',
-        'Também colaboro com backend e mobile na definição de fluxos e integrações, buscando manter consistência entre as diferentes camadas da aplicação.',
-        'Tenho foco em qualidade de código, organização e escalabilidade, sempre buscando soluções bem estruturadas e de fácil manutenção.',
-        'Atualmente, estou expandindo meus conhecimentos em back-end com Node.js e Java, evoluindo minha atuação como engenheira de software.'
+        'Sou Coordenadora de Projetos com experiência em gestão de equipes, metodologias ágeis e desenvolvimento de soluções tecnológicas. Atuo na conexão entre negócio e tecnologia, liderando projetos de ponta a ponta.',
+        'Tenho background técnico em desenvolvimento web com React, JavaScript e TypeScript, o que me permite ter uma visão completa dos projetos e facilitar a comunicação entre áreas técnicas e de negócio.',
+        'Experiência em projetos de automação (RPA), análise de processos, gestão de squads e mentoria técnica, sempre buscando entregar valor e desenvolver pessoas.',
+        'Atualmente cursando Ciência da Computação e me especializando em IA Generativa e Cloud Computing com certificações Google Cloud e Microsoft Azure.'
       ],
       pillars: [
         {
-          title: 'Clean Code',
+          title: 'Tecnologia',
           description:
-            'Estruturo aplicações com foco em componentização, organização e boas práticas, facilitando manutenção e evolução do projeto.'
+            'Desenvolvimento web com React, JavaScript e TypeScript, criando soluções funcionais e escaláveis.'
         },
         {
-          title: 'Colaboração',
+          title: 'Gestão de Projetos',
+          description: 'Coordenação de equipes utilizando Scrum e Kanban para entregas constantes de valor.'
+        },
+        {
+          title: 'Automação',
           description:
-            'Experiência em times ágeis, atuando na organização de tarefas, condução de dailies e acompanhamento das entregas.'
+            'Implementação de soluções em RPA e automação de processos para otimização operacional e redução de custos.'
         },
         {
-          title: 'Performance',
-          description: 'Otimização de aplicações React com foco em carregamento rápido, fluidez e experiência do usuário.'
-        },
-        {
-          title: 'Visão de Produto',
-          description: 'Atuação próxima às decisões de produto, conectando necessidades do negócio à implementação técnica.'
+          title: 'Visão de Negócio',
+          description:
+            'Conexão estratégica entre necessidades do negócio e soluções tecnológicas, atuando como ponte decisiva.'
         }
       ]
     },
+    experience: {
+      badge: '02 // experiência',
+      title: [
+        { kind: 'text', value: 'Trajetória ' },
+        { kind: 'emphasis', value: 'Profissional' }
+      ]
+    },
     projects: {
-      title: 'Projetos',
+      badge: '03 // projetos',
+      title: [
+        { kind: 'text', value: 'Projetos em ' },
+        { kind: 'emphasis', value: 'destaque' }
+      ],
       description:
-        'Uma seleção de projetos que demonstram minhas habilidades em desenvolvimento web, desde aplicações web complexas até soluções simples e eficientes.',
-      filterLabel: 'Filtrar por tecnologias:',
+        'Uma seleção de projetos que demonstram minha experiência em gestão de projetos, coordenação de equipes e desenvolvimento de soluções tecnológicas.',
+      filterLabel: 'Filtrar por tecnologia:',
+      categoryAll: 'Todos',
+      categoryManagement: 'Gestão',
+      categoryDevelopment: 'Desenvolvimento',
       featuredTitle: 'Projetos em Destaque',
       moreTitle: 'Mais projetos',
       emptyMessage: 'Nenhum projeto encontrado com os filtros selecionados.'
+    },
+    media: {
+      badge: '04 // mídia',
+      title: [
+        { kind: 'text', value: 'Reconhecimento na ' },
+        { kind: 'emphasis', value: 'Mídia' }
+      ],
+      readArticle: 'Ler matéria completa',
+      officialPublication: 'publicação oficial'
+    },
+    education: {
+      badge: '05 // formação',
+      title: [
+        { kind: 'text', value: 'Educação e ' },
+        { kind: 'emphasis', value: 'Certificações' }
+      ],
+      academicTitle: 'Formação Acadêmica',
+      certificationsTitle: 'Certificações',
+      inProgress: 'Em andamento'
     },
     contact: {
       badge: 'Contato',
@@ -76,9 +112,8 @@ export default {
         'Estou sempre aberta a discutir novos projetos, ideias criativas ou oportunidades de fazer parte de suas visões.',
       getInTouchTitle: 'Entre em contato',
       getInTouchDescription:
-        'Seja pra uma oportunidade de colaboração, uma posição full time ou apenas para trocar ideias sobre tecnologia. Adoraria ouvir você!',
+        'Seja para um projeto freelance, uma posição full-time ou apenas para trocar ideias sobre tecnologia — adoraria ouvir você.',
       networksTitle: 'Me encontre nas redes',
-      location: 'São José dos Campos, SP',
       formTitle: 'Enviar mensagem',
       formDescription: 'Preencha o formulário abaixo',
       form: {
@@ -95,12 +130,15 @@ export default {
   },
   actions: {
     viewProjects: 'Ver Projetos',
-    downloadCv: 'Download CV',
+    downloadCv: 'Baixar CV',
+    downloadPortfolioCoordenadora: 'Baixar Portfólio de Coordenadora',
     viewDetails: 'Ver detalhes',
     sendMessage: 'Enviar mensagem',
     backToTop: 'Voltar ao início',
     clearFilters: 'Limpar Filtros',
-    viewMoreOnGithub: 'Ver mais no GitHub'
+    viewMoreOnGithub: 'Ver mais no GitHub',
+    heroCode: 'Código',
+    heroPreview: 'Preview'
   },
   a11y: {
     siteLogo: 'Yasmin Alves — ir para o início',
@@ -113,6 +151,8 @@ export default {
     openWhatsapp: 'Abrir WhatsApp',
     sendEmail: 'Enviar email',
     projectDetailsPrefix: 'Ver detalhes do projeto',
-    moreProjectsOnGithub: 'Ver mais projetos no GitHub yasminalves16'
+    moreProjectsOnGithub: 'Ver mais projetos no GitHub yasminalves16',
+    downloadDocumentPrefix: 'Baixar documento',
+    externalCredential: 'Abrir credencial externa'
   }
 } satisfies LocaleMessages;

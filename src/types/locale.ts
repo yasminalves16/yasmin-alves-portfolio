@@ -11,7 +11,9 @@ export type LocaleMessages = {
   navigation: {
     hero: string;
     about: string;
+    experience: string;
     projects: string;
+    education: string;
     contact: string;
   };
   sections: {
@@ -24,16 +26,38 @@ export type LocaleMessages = {
     about: {
       title: string;
       headline: RichHeadingSegment[];
+      roleLabel: string;
       paragraphs: string[];
       pillars: Array<{ title: string; description: string }>;
     };
+    experience: {
+      badge: string;
+      title: RichHeadingSegment[];
+    };
     projects: {
-      title: string;
+      badge: string;
+      title: RichHeadingSegment[];
       description: string;
       filterLabel: string;
+      categoryAll: string;
+      categoryManagement: string;
+      categoryDevelopment: string;
       featuredTitle: string;
       moreTitle: string;
       emptyMessage: string;
+    };
+    media: {
+      badge: string;
+      title: RichHeadingSegment[];
+      readArticle: string;
+      officialPublication: string;
+    };
+    education: {
+      badge: string;
+      title: RichHeadingSegment[];
+      academicTitle: string;
+      certificationsTitle: string;
+      inProgress: string;
     };
     contact: {
       badge: string;
@@ -42,7 +66,6 @@ export type LocaleMessages = {
       getInTouchTitle: string;
       getInTouchDescription: string;
       networksTitle: string;
-      location: string;
       formTitle: string;
       formDescription: string;
       form: {
@@ -60,11 +83,14 @@ export type LocaleMessages = {
   actions: {
     viewProjects: string;
     downloadCv: string;
+    downloadPortfolioCoordenadora: string;
     viewDetails: string;
     sendMessage: string;
     backToTop: string;
     clearFilters: string;
     viewMoreOnGithub: string;
+    heroCode: string;
+    heroPreview: string;
   };
   a11y: {
     siteLogo: string;
@@ -78,6 +104,8 @@ export type LocaleMessages = {
     sendEmail: string;
     projectDetailsPrefix: string;
     moreProjectsOnGithub: string;
+    downloadDocumentPrefix: string;
+    externalCredential: string;
   };
 };
 
