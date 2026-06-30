@@ -1,4 +1,4 @@
-export { profile } from './profile';
+export { getProfile } from './profile';
 export { socialLinks, getSocialLink } from './social-links';
 export { getHeroContent } from './hero';
 export {

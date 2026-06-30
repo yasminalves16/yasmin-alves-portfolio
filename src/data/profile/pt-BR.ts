@@ -1,9 +1,8 @@
-import type { Profile } from '../types/profile';
+import type { Profile } from '../../types/profile';
 
 export const profile: Profile = {
   name: 'Yasmin Alves',
-  role: 'Desenvolvedora Front-End',
-  roleExtended: 'Desenvolvedora Front-End & Coordenadora de Projetos',
+  role: 'Desenvolvedora Front-End com foco em produto',
   tagline:
     'Transformo necessidades de negócio em soluções tecnológicas, conectando pessoas, processos e tecnologia para entregar resultados reais.',
   summary:
