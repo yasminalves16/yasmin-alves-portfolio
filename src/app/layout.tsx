@@ -1,4 +1,7 @@
-import type { Metadata } from 'next';
+'use client';
+
+import { LocaleProvider } from '@/src/context/locale-context';
+import { ThemeProvider } from '@/src/context/theme-context';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 
@@ -12,12 +15,6 @@ const geistMono = Geist_Mono({
   subsets: ['latin']
 });
 
-export const metadata: Metadata = {
-  title: 'Yasmin Alves - Portfólio',
-  description:
-    'Portfólio de Yasmin Alves, desenvolvedora front-end com foco em produto. Explore projetos, habilidades e experiência em React, JavaScript e TypeScript.'
-};
-
 export default function RootLayout({
   children
 }: Readonly<{
@@ -25,7 +22,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='pt-br' className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className='min-h-full flex flex-col'>{children}</body>
+      <body className='min-h-full flex flex-col'>
+        <LocaleProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </LocaleProvider>
+      </body>
     </html>
   );
 }
