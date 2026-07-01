@@ -1,9 +1,11 @@
 'use client';
 
+import { HoverCard } from '@/src/components/motion/hover-card';
+import { SectionHeader } from '@/src/components/motion/section-header';
+import { Stagger, StaggerItem } from '@/src/components/motion/stagger';
 import { useMessages } from '@/src/hooks/use-messages';
 import { usePortfolioData } from '@/src/hooks/use-portfolio-data';
 import { Container } from '../../ui/container';
-import { RichHeading } from '../../ui/rich-heading';
 
 export function MediaRecognition() {
   const { mediaRecognition } = usePortfolioData();
@@ -13,15 +15,15 @@ export function MediaRecognition() {
   return (
     <section id='media'>
       <Container>
-        <div className='mb-10 space-y-4'>
-          <span className='section-badge'>{media.badge}</span>
-          <RichHeading segments={media.title} as='h2' />
-        </div>
+        <SectionHeader badge={media.badge} title={media.title} />
 
-        <ul className='space-y-6'>
+        <Stagger as='ul' className='space-y-6'>
           {mediaRecognition.map((item) => (
-            <li key={item.id}>
-              <article className='rounded-xl border border-border bg-card p-8'>
+            <StaggerItem key={item.id} as='li'>
+              <HoverCard
+                as='article'
+                className='rounded-xl border border-border bg-card p-8 transition-colors hover:border-primary/20'
+              >
                 <header className='mb-4 space-y-1'>
                   <p className='text-sm font-medium text-primary'>{item.source}</p>
                   <p className='text-xs text-muted-foreground'>{item.sourceSubtitle}</p>
@@ -51,10 +53,10 @@ export function MediaRecognition() {
                     {media.officialPublication}
                   </span>
                 </div>
-              </article>
-            </li>
+              </HoverCard>
+            </StaggerItem>
           ))}
-        </ul>
+        </Stagger>
       </Container>
     </section>
   );
