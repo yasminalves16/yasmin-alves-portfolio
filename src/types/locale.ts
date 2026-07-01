@@ -37,6 +37,7 @@ export type LocaleMessages = {
     projects: string;
     education: string;
     contact: string;
+    footer: string;
   };
   sections: {
     hero: {
@@ -55,6 +56,8 @@ export type LocaleMessages = {
     experience: {
       badge: string;
       title: RichHeadingSegment[];
+      focusLabels: Record<'gestao' | 'mentoria' | 'desenvolvimento', string>;
+      swipeHint: string;
     };
     projects: {
       badge: string;
@@ -82,6 +85,10 @@ export type LocaleMessages = {
       inProgress: string;
     };
     contact: ContactSectionMessages;
+    footer: {
+      madeWith: string;
+      copyright: string;
+    };
   };
   actions: {
     viewProjects: string;

@@ -12,7 +12,8 @@ export default {
     experience: 'Experiência',
     projects: 'Projetos',
     education: 'Formação',
-    contact: 'Contato'
+    contact: 'Contato',
+    footer: 'Rodapé'
   },
   sections: {
     hero: {
@@ -62,7 +63,13 @@ export default {
       title: [
         { kind: 'text', value: 'Trajetória ' },
         { kind: 'emphasis', value: 'Profissional' }
-      ]
+      ],
+      focusLabels: {
+        gestao: 'Gestão',
+        mentoria: 'Mentoria',
+        desenvolvimento: 'Desenvolvimento'
+      },
+      swipeHint: 'Deslize para explorar'
     },
     projects: {
       badge: '03 // projetos',
@@ -125,6 +132,10 @@ export default {
         messageLabel: 'Mensagem',
         messagePlaceholder: 'Escreva sua mensagem aqui...'
       }
+    },
+    footer: {
+      madeWith: 'Feito com 💖 por Yasmin Alves',
+      copyright: '© 2026 Yasmin Alves.'
     }
   },
   actions: {
