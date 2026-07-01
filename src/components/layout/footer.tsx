@@ -1,15 +1,22 @@
+'use client';
+
+import { Reveal } from '@/src/components/motion/reveal';
+import { useMessages } from '@/src/hooks/use-messages';
 import { Container } from '../ui/container';
 
 export function Footer() {
+  const { sections } = useMessages();
+  const { footer } = sections;
+
   return (
-    <footer className='hidden border-t border-border bg-card lg:block'>
-      <Container asSection={false} className='py-8'>
-        <div className='flex flex-col items-center justify-between gap-4 sm:flex-row'>
-          <p className='text-sm text-muted-foreground'>Feito com 💖 por Yasmin Alves</p>
-          <p className='text-sm text-muted-foreground'>
-            <small>© 2026 Yasmin Alves.</small>
-          </p>
-        </div>
+    <footer id='footer' className='border-t border-border bg-card'>
+      <Container asSection={false} className='py-4 pb-24 lg:pb-4'>
+        <Reveal>
+          <div className='flex flex-col items-center justify-between gap-2 sm:flex-row sm:gap-4'>
+            <p className='text-xs text-muted-foreground'>{footer.madeWith}</p>
+            <p className='text-xs text-muted-foreground'>{footer.copyright}</p>
+          </div>
+        </Reveal>
       </Container>
     </footer>
   );
