@@ -4,19 +4,20 @@ import { useMessages } from '@/src/hooks/use-messages';
 import { useActiveSection } from '@/src/hooks/use-active-section';
 import { usePortfolioData } from '@/src/hooks/use-portfolio-data';
 import { cn } from '@/src/lib/utils';
-import { AtSign, Download, FolderKanban, Home, Route } from 'lucide-react';
+import { Download, FolderKanban, GraduationCap, Home, PanelBottom, Route } from 'lucide-react';
 
 const navItems = [
-  { id: 'hero', href: '#hero', icon: Home, label: 'Início' },
-  { id: 'experience', href: '#experience', icon: Route, label: 'Experiência' },
-  { id: 'projects', href: '#projects', icon: FolderKanban, label: 'Projetos' },
-  { id: 'contact', href: '#contact', icon: AtSign, label: 'Contato' }
+  { id: 'hero', href: '#hero', icon: Home, labelKey: 'hero' as const },
+  { id: 'experience', href: '#experience', icon: Route, labelKey: 'experience' as const },
+  { id: 'projects', href: '#projects', icon: FolderKanban, labelKey: 'projects' as const },
+  { id: 'education', href: '#education', icon: GraduationCap, labelKey: 'education' as const },
+  { id: 'footer', href: '#footer', icon: PanelBottom, labelKey: 'footer' as const }
 ] as const;
 
 export function MobileBottomNav() {
   const activeSection = useActiveSection(navItems.map((item) => item.id));
   const { profile } = usePortfolioData();
-  const { actions, a11y } = useMessages();
+  const { navigation, actions, a11y } = useMessages();
   const cvDocument =
     profile.documents.find((document) => document.id === 'cv-front-end') ?? profile.documents[0];
   const showCvButton = activeSection === 'hero';
@@ -40,11 +41,12 @@ export function MobileBottomNav() {
         )}
 
         <nav
-          className='flex w-full items-center justify-between rounded-full border border-border bg-card/95 px-2 py-2 shadow-lg backdrop-blur-md'
+          className='flex w-full items-center justify-between gap-1 rounded-full border border-border bg-card/95 px-1.5 py-1.5 shadow-lg backdrop-blur-md'
           aria-label='Navegação rápida'
         >
-          {navItems.map(({ id, href, icon: Icon, label }) => {
+          {navItems.map(({ id, href, icon: Icon, labelKey }) => {
             const isActive = activeSection === id;
+            const label = navigation[labelKey];
 
             return (
               <a
@@ -54,7 +56,7 @@ export function MobileBottomNav() {
                 aria-current={isActive ? 'page' : undefined}
                 title={label}
                 className={cn(
-                  'flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition-colors',
+                  'flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition-colors sm:h-11 sm:w-11',
                   isActive
                     ? 'bg-primary text-primary-foreground'
                     : 'text-accent hover:text-primary'
