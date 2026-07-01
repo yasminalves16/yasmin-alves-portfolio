@@ -164,7 +164,8 @@ html.dark-blue,
     @apply bg-background text-foreground font-sans;
   }
 
-  section[id] {
+  section[id],
+  footer[id] {
     scroll-margin-top: 5rem;
     scroll-margin-bottom: 8rem;
   }
@@ -173,5 +174,14 @@ html.dark-blue,
 @layer components {
   .section-badge {
     @apply text-sm font-mono text-muted-foreground uppercase tracking-widest;
+  }
+
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
   }
 }
