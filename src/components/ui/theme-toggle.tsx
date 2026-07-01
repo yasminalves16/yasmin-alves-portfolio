@@ -1,7 +1,7 @@
 'use client';
 
 import { useTheme } from '@/src/hooks/use-theme';
-import { type ThemeId } from '@/types/theme';
+import { type ThemeId } from '@/src/types/theme';
 import { Moon, MoonStar, Sun } from 'lucide-react';
 
 function ThemeIcon({ id }: { id: ThemeId }) {
