@@ -1,11 +1,12 @@
 'use client';
 
 import { useTheme } from '@/src/hooks/use-theme';
+import { cn } from '@/src/lib/utils';
 import { type ThemeId } from '@/src/types/theme';
 import { Moon, MoonStar, Sun } from 'lucide-react';
 
 function ThemeIcon({ id }: { id: ThemeId }) {
-  const size = 20;
+  const size = 18;
   switch (id) {
     case 'light':
       return <Sun size={size} aria-hidden />;
@@ -36,7 +37,9 @@ export const ThemeToggle = () => {
     <button
       type='button'
       onClick={cycleTheme}
-      className='p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 transition-colors hover:bg-gray-300 dark:hover:bg-gray-700'
+      className={cn(
+        'rounded-full bg-secondary p-2 text-foreground transition-colors hover:bg-muted'
+      )}
       aria-label={themeLabel[theme]}
       title={themeLabel[theme]}
     >

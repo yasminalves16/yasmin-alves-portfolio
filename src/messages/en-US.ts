@@ -12,7 +12,8 @@ export default {
     experience: 'Experience',
     projects: 'Projects',
     education: 'Education',
-    contact: 'Contact'
+    contact: 'Contact',
+    footer: 'Footer'
   },
   sections: {
     hero: {
@@ -61,7 +62,13 @@ export default {
       title: [
         { kind: 'text', value: 'Professional ' },
         { kind: 'emphasis', value: 'Journey' }
-      ]
+      ],
+      focusLabels: {
+        gestao: 'Management',
+        mentoria: 'Mentorship',
+        desenvolvimento: 'Development'
+      },
+      swipeHint: 'Swipe to explore'
     },
     projects: {
       badge: '03 // projects',
@@ -124,6 +131,10 @@ export default {
         messageLabel: 'Message',
         messagePlaceholder: 'Write your message here...'
       }
+    },
+    footer: {
+      madeWith: 'Made with 💖 by Yasmin Alves',
+      copyright: '© 2026 Yasmin Alves.'
     }
   },
   actions: {

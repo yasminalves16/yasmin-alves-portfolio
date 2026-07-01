@@ -1,3 +1,4 @@
+import { Header } from '@/src/components/layout/header';
 import { ProjectDetailView } from '@/src/components/projects/project-detail-view';
 import { getAllProjects, getProjectBySlug } from '@/src/data';
 import { DEFAULT_LOCALE } from '@/src/types/locale';
@@ -17,5 +18,10 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     notFound();
   }
 
-  return <ProjectDetailView slug={slug} />;
+  return (
+    <>
+      <Header />
+      <ProjectDetailView slug={slug} />
+    </>
+  );
 }

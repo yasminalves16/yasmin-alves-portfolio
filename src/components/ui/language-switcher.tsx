@@ -2,6 +2,7 @@
 
 import { useLocale } from '@/src/hooks/use-locale';
 import { BREAKPOINTS, useMediaQuery } from '@/src/hooks/use-media-query';
+import { cn } from '@/src/lib/utils';
 import { type LocaleCode } from '@/src/types/locale';
 
 const localeLabel: Record<LocaleCode, string> = {
@@ -28,7 +29,9 @@ export const LanguageSwitcher = () => {
     <button
       type='button'
       onClick={toggleLanguage}
-      className='px-3 py-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 transition-colors hover:bg-gray-300 dark:hover:bg-gray-700 text-sm font-medium'
+      className={cn(
+        'rounded-full bg-secondary px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted'
+      )}
       aria-label={`Mudar para ${localeFullLabel[otherLocale]}`}
       title={`Mudar para ${localeFullLabel[otherLocale]}`}
     >

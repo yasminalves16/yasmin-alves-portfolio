@@ -1,5 +1,6 @@
 import { Footer } from '../components/layout/footer';
 import { Header } from '../components/layout/header';
+import { MobileBottomNav } from '../components/layout/mobile-bottom-nav';
 import { About } from '../components/sections/about';
 import { Contact } from '../components/sections/contact/contact';
 import { Education } from '../components/sections/education/education';
@@ -12,7 +13,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main>
+      <main className='pb-28 lg:pb-0'>
         <Hero />
         <About />
         <Experience />
@@ -22,6 +23,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <MobileBottomNav />
     </>
   );
 }

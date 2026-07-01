@@ -28,25 +28,24 @@ function readInitialTheme(): ThemeId {
   return DEFAULT_THEME;
 }
 
+function applyThemeClass(theme: ThemeId) {
+  const root = document.documentElement;
+  root.dataset.theme = theme;
+  root.classList.remove('dark', 'dark-blue');
+
+  if (theme === 'dark') {
+    root.classList.add('dark');
+  } else if (theme === 'dark-blue') {
+    root.classList.add('dark-blue');
+  }
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<ThemeId>(readInitialTheme);
 
-  // Sincronizar mudanças de tema
   useLayoutEffect(() => {
     localStorage.setItem('theme', theme);
-
-    // Atualizar atributos do elemento raiz
-    if (typeof document !== 'undefined') {
-      const root = document.documentElement;
-      root.dataset.theme = theme;
-
-      // Adicionar/remover classe 'dark' para compatibilidade com Tailwind
-      if (theme.startsWith('dark')) {
-        root.classList.add('dark');
-      } else {
-        root.classList.remove('dark');
-      }
-    }
+    applyThemeClass(theme);
   }, [theme]);
 
   const setTheme = (newTheme: ThemeId | ((prev: ThemeId) => ThemeId)) => {

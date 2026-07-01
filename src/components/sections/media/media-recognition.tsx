@@ -1,9 +1,11 @@
 'use client';
 
+import { HoverCard } from '@/src/components/motion/hover-card';
+import { SectionHeader } from '@/src/components/motion/section-header';
+import { Stagger, StaggerItem } from '@/src/components/motion/stagger';
 import { useMessages } from '@/src/hooks/use-messages';
 import { usePortfolioData } from '@/src/hooks/use-portfolio-data';
 import { Container } from '../../ui/container';
-import { RichHeading } from '../../ui/rich-heading';
 
 export function MediaRecognition() {
   const { mediaRecognition } = usePortfolioData();
@@ -13,32 +15,48 @@ export function MediaRecognition() {
   return (
     <section id='media'>
       <Container>
-        <span>{media.badge}</span>
-        <RichHeading segments={media.title} as='h2' />
+        <SectionHeader badge={media.badge} title={media.title} />
 
-        <ul>
+        <Stagger as='ul' className='space-y-6'>
           {mediaRecognition.map((item) => (
-            <li key={item.id}>
-              <article>
-                <header>
-                  <p>{item.source}</p>
-                  <p>{item.sourceSubtitle}</p>
+            <StaggerItem key={item.id} as='li'>
+              <HoverCard
+                as='article'
+                className='rounded-xl border border-border bg-card p-8 transition-colors hover:border-primary/20'
+              >
+                <header className='mb-4 space-y-1'>
+                  <p className='text-sm font-medium text-primary'>{item.source}</p>
+                  <p className='text-xs text-muted-foreground'>{item.sourceSubtitle}</p>
                 </header>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-                <ul>
+                <h3 className='mb-3 text-lg font-semibold'>{item.title}</h3>
+                <p className='mb-4 text-muted-foreground'>{item.description}</p>
+                <ul className='mb-4 flex flex-wrap gap-2'>
                   {item.tags.map((tag) => (
-                    <li key={tag}>{tag}</li>
+                    <li
+                      key={tag}
+                      className='rounded-full bg-secondary px-3 py-1 text-xs text-secondary-foreground'
+                    >
+                      {tag}
+                    </li>
                   ))}
                 </ul>
-                <a href={item.articleUrl} target='_blank' rel='noopener noreferrer'>
-                  {media.readArticle}
-                </a>
-                <span>{media.officialPublication}</span>
-              </article>
-            </li>
+                <div className='flex flex-wrap items-center gap-3'>
+                  <a
+                    href={item.articleUrl}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='font-medium text-primary hover:underline'
+                  >
+                    {media.readArticle}
+                  </a>
+                  <span className='rounded-full bg-accent/20 px-2 py-1 text-xs text-accent-foreground'>
+                    {media.officialPublication}
+                  </span>
+                </div>
+              </HoverCard>
+            </StaggerItem>
           ))}
-        </ul>
+        </Stagger>
       </Container>
     </section>
   );
