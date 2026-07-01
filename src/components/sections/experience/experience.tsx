@@ -13,30 +13,38 @@ export function Experience() {
   return (
     <section id='experience'>
       <Container>
-        <span>{experienceMessages.badge}</span>
-        <RichHeading segments={experienceMessages.title} as='h2' />
+        <div className='mb-10 space-y-4'>
+          <span className='section-badge'>{experienceMessages.badge}</span>
+          <RichHeading segments={experienceMessages.title} as='h2' />
+        </div>
 
-        <ul>
+        <ul className='space-y-10 border-l-2 border-primary/30 pl-8'>
           {experience.map((entry) => (
-            <li key={entry.id}>
-              <article>
-                <header>
-                  <h3>{entry.role}</h3>
-                  <p>
+            <li key={entry.id} className='relative'>
+              <span className='absolute -left-[2.125rem] top-1 h-4 w-4 rounded-full bg-primary' aria-hidden />
+              <article className='rounded-xl border border-border bg-card p-6'>
+                <header className='mb-4 space-y-1'>
+                  <h3 className='text-lg font-semibold'>{entry.role}</h3>
+                  <p className='text-sm text-muted-foreground'>
                     {entry.company} · {entry.employmentType}
                   </p>
-                  <p>
+                  <p className='text-sm text-muted-foreground'>
                     {entry.period} · {entry.location}
                   </p>
                 </header>
-                <ul>
+                <ul className='mb-4 list-disc space-y-2 pl-5 text-muted-foreground'>
                   {entry.bullets.map((bullet) => (
                     <li key={bullet}>{bullet}</li>
                   ))}
                 </ul>
-                <ul>
+                <ul className='flex flex-wrap gap-2'>
                   {entry.tags.map((tag) => (
-                    <li key={tag}>{tag}</li>
+                    <li
+                      key={tag}
+                      className='rounded-full bg-secondary px-3 py-1 text-xs text-secondary-foreground'
+                    >
+                      {tag}
+                    </li>
                   ))}
                 </ul>
               </article>
