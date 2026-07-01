@@ -13,28 +13,44 @@ export function MediaRecognition() {
   return (
     <section id='media'>
       <Container>
-        <span>{media.badge}</span>
-        <RichHeading segments={media.title} as='h2' />
+        <div className='mb-10 space-y-4'>
+          <span className='section-badge'>{media.badge}</span>
+          <RichHeading segments={media.title} as='h2' />
+        </div>
 
-        <ul>
+        <ul className='space-y-6'>
           {mediaRecognition.map((item) => (
             <li key={item.id}>
-              <article>
-                <header>
-                  <p>{item.source}</p>
-                  <p>{item.sourceSubtitle}</p>
+              <article className='rounded-xl border border-border bg-card p-8'>
+                <header className='mb-4 space-y-1'>
+                  <p className='text-sm font-medium text-primary'>{item.source}</p>
+                  <p className='text-xs text-muted-foreground'>{item.sourceSubtitle}</p>
                 </header>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-                <ul>
+                <h3 className='mb-3 text-lg font-semibold'>{item.title}</h3>
+                <p className='mb-4 text-muted-foreground'>{item.description}</p>
+                <ul className='mb-4 flex flex-wrap gap-2'>
                   {item.tags.map((tag) => (
-                    <li key={tag}>{tag}</li>
+                    <li
+                      key={tag}
+                      className='rounded-full bg-secondary px-3 py-1 text-xs text-secondary-foreground'
+                    >
+                      {tag}
+                    </li>
                   ))}
                 </ul>
-                <a href={item.articleUrl} target='_blank' rel='noopener noreferrer'>
-                  {media.readArticle}
-                </a>
-                <span>{media.officialPublication}</span>
+                <div className='flex flex-wrap items-center gap-3'>
+                  <a
+                    href={item.articleUrl}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='font-medium text-primary hover:underline'
+                  >
+                    {media.readArticle}
+                  </a>
+                  <span className='rounded-full bg-accent/20 px-2 py-1 text-xs text-accent-foreground'>
+                    {media.officialPublication}
+                  </span>
+                </div>
               </article>
             </li>
           ))}

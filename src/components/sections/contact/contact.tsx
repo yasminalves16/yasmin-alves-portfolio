@@ -41,46 +41,51 @@ export function Contact() {
   return (
     <section id='contact'>
       <Container>
-        <span>
-          <Sparkles /> {contact.badge} <Sparkles />
-        </span>
-        <RichHeading segments={contact.heading} as='h2' />
-        <p>{contact.description}</p>
+        <div className='mb-10 space-y-4 text-center lg:text-left'>
+          <span className='section-badge inline-flex items-center gap-2'>
+            <Sparkles size={14} aria-hidden /> {contact.badge} <Sparkles size={14} aria-hidden />
+          </span>
+          <RichHeading segments={contact.heading} as='h2' />
+          <p className='max-w-2xl text-muted-foreground'>{contact.description}</p>
+        </div>
 
-        <div>
-          <div>
-            <h3>{contact.getInTouchTitle}</h3>
-            <p>{contact.getInTouchDescription}</p>
-            <p>
-              <MapPinHouse /> {contact.location}
+        <div className='grid gap-10 lg:grid-cols-2'>
+          <div className='space-y-4 rounded-xl border border-border bg-card p-6'>
+            <h3 className='text-xl font-semibold'>{contact.getInTouchTitle}</h3>
+            <p className='text-muted-foreground'>{contact.getInTouchDescription}</p>
+            <p className='flex items-center gap-2 text-sm text-muted-foreground'>
+              <MapPinHouse size={18} aria-hidden /> {contact.location}
             </p>
-            <Button onClick={openModal}>
-              <Mail /> {actions.sendMessage} <Send />
+            <Button onClick={openModal} className='mt-2'>
+              <Mail size={16} aria-hidden /> {actions.sendMessage} <Send size={16} aria-hidden />
             </Button>
           </div>
 
-          <div>
-            <h3>{contact.networksTitle}</h3>
-            <ul>
+          <div className='space-y-4'>
+            <h3 className='text-xl font-semibold'>{contact.networksTitle}</h3>
+            <ul className='space-y-3'>
               {socialLinks.map((link) => {
                 const Icon = socialIcons[link.id];
                 const a11yLabel = a11y[socialA11yKeys[link.id]];
 
                 return (
                   <li key={link.id}>
-                    <span>
-                      <Icon />
-                    </span>
-                    <div>
-                      <h4>{link.label}</h4>
-                      <a
-                        href={link.href}
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        aria-label={a11yLabel}
-                      >
-                        {link.display}
-                      </a>
+                    <div className='flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition-colors hover:border-primary/30'>
+                      <span className='flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-primary'>
+                        <Icon />
+                      </span>
+                      <div>
+                        <h4 className='text-sm font-medium'>{link.label}</h4>
+                        <a
+                          href={link.href}
+                          target='_blank'
+                          rel='noopener noreferrer'
+                          aria-label={a11yLabel}
+                          className='text-sm text-muted-foreground transition-colors hover:text-primary'
+                        >
+                          {link.display}
+                        </a>
+                      </div>
                     </div>
                   </li>
                 );
@@ -89,7 +94,12 @@ export function Contact() {
           </div>
         </div>
       </Container>
-      <dialog ref={dialogRef} aria-labelledby='contact-title' aria-describedby='contact-description'>
+      <dialog
+        ref={dialogRef}
+        className='max-w-lg rounded-xl border border-border bg-card p-0 shadow-xl backdrop:bg-background/80 open:flex open:flex-col'
+        aria-labelledby='contact-title'
+        aria-describedby='contact-description'
+      >
         <ContactFormModal closeModal={closeModal} />
       </dialog>
     </section>
