@@ -1,48 +1,90 @@
 'use client';
+
+import { socialLinks } from '@/src/data';
+import { useMessages } from '@/src/hooks/use-messages';
+import { usePortfolioData } from '@/src/hooks/use-portfolio-data';
 import { motion } from 'framer-motion';
 import { FiArrowRight, FiGithub, FiLinkedin } from 'react-icons/fi';
 import { MdOutlineFileDownload, MdWhatsapp } from 'react-icons/md';
 import { Container } from '../ui/container';
 
+const socialIcons = {
+  github: FiGithub,
+  linkedin: FiLinkedin,
+  whatsapp: MdWhatsapp
+} as const;
+
+const socialA11yKeys = {
+  github: 'openGithub',
+  linkedin: 'openLinkedin',
+  whatsapp: 'openWhatsapp'
+} as const;
+
 export function Hero() {
+  const { profile } = usePortfolioData();
+  const { sections, actions, a11y } = useMessages();
+  const [firstName, ...lastNameParts] = profile.name.split(' ');
+  const lastName = lastNameParts.join(' ');
+  const heroSocialLinks = socialLinks.filter((link) => link.id !== 'email');
+
   return (
     <section id='hero' className='relative min-h-[100svh]'>
       <Container>
-        <video src='/assets/hero/iayasmin.mp4' aria-hidden='true' autoPlay muted loop playsInline width={500} height={500} />
+        <video
+          src='/assets/hero/iayasmin.mp4'
+          aria-label={a11y.decorativeHeroVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+          width={500}
+          height={500}
+        />
         <div>
           <h1>
-            Yasmin<span>Alves</span>
+            {firstName}
+            <span>{lastName}</span>
           </h1>
-          <span>&lt; Desenvolvedora Front-End com foco em produto &gt;</span>
+          <span>&lt; {profile.role} &gt;</span>
           <div>
-            <p>Construo interfaces modernas e aplicações web funcionais, conectando tecnologia e necessidades de negócio.</p>
-            <p>Experiência com React, JavaScript e TypeScript, atuando desde a estruturação até a entrega de soluções reais.</p>
+            {sections.hero.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
           <div>
             <a href='#projects'>
-              Ver Projetos <FiArrowRight />
+              {actions.viewProjects} <FiArrowRight />
             </a>
-            <a href='/cv.pdf' download>
-              Download CV <MdOutlineFileDownload />
-            </a>
+            {profile.documents.map((document) => (
+              <a
+                key={document.id}
+                href={document.href}
+                download={document.filename}
+                aria-label={`${a11y.downloadDocumentPrefix}: ${document.label}`}
+              >
+                {document.label} <MdOutlineFileDownload />
+              </a>
+            ))}
           </div>
           <div>
             <ul>
-              <li>
-                <a href='https://github.com' target='_blank' rel='noopener noreferrer' aria-label='Abrir GitHub'>
-                  <FiGithub />
-                </a>
-              </li>
-              <li>
-                <a href='https://linkedin.com' target='_blank' rel='noopener noreferrer' aria-label='Abrir LinkedIn'>
-                  <FiLinkedin />
-                </a>
-              </li>
-              <li>
-                <a href='https://whatsapp.com' target='_blank' rel='noopener noreferrer' aria-label='Abrir WhatsApp'>
-                  <MdWhatsapp />
-                </a>
-              </li>
+              {heroSocialLinks.map((link) => {
+                const Icon = socialIcons[link.id as keyof typeof socialIcons];
+                const a11yKey = socialA11yKeys[link.id as keyof typeof socialA11yKeys];
+
+                return (
+                  <li key={link.id}>
+                    <a
+                      href={link.href}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      aria-label={a11y[a11yKey]}
+                    >
+                      <Icon />
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 

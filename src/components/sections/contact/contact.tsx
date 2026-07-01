@@ -1,14 +1,34 @@
 'use client';
+
+import { socialLinks } from '@/src/data';
+import { useMessages } from '@/src/hooks/use-messages';
 import { Mail, MapPinHouse, Send, Sparkles } from 'lucide-react';
 import { useRef } from 'react';
 import { FiGithub, FiLinkedin } from 'react-icons/fi';
 import { MdWhatsapp } from 'react-icons/md';
 import { Button } from '../../ui/button';
 import { Container } from '../../ui/container';
+import { RichHeading } from '../../ui/rich-heading';
 import { ContactFormModal } from './contact-form-modal';
+
+const socialIcons = {
+  github: FiGithub,
+  linkedin: FiLinkedin,
+  whatsapp: MdWhatsapp,
+  email: Mail
+} as const;
+
+const socialA11yKeys = {
+  github: 'openGithub',
+  linkedin: 'openLinkedin',
+  whatsapp: 'openWhatsapp',
+  email: 'sendEmail'
+} as const;
 
 export function Contact() {
   const dialogRef = useRef<HTMLDialogElement | null>(null);
+  const { sections, actions, a11y } = useMessages();
+  const { contact } = sections;
 
   const openModal = () => {
     dialogRef.current?.showModal();
@@ -22,78 +42,49 @@ export function Contact() {
     <section id='contact'>
       <Container>
         <span>
-          <Sparkles /> Contato <Sparkles />
+          <Sparkles /> {contact.badge} <Sparkles />
         </span>
-        <h2>
-          Vamos trabalhar <span>juntos</span>?
-        </h2>
-        <p>Estou sempre aberta a discutir novos projetos, ideias criativas ou oportunidades de fazer parte de suas visões.</p>
+        <RichHeading segments={contact.heading} as='h2' />
+        <p>{contact.description}</p>
 
         <div>
           <div>
-            <h3>Entre em contato</h3>
+            <h3>{contact.getInTouchTitle}</h3>
+            <p>{contact.getInTouchDescription}</p>
             <p>
-              Seja pra uma oportunidade de colaboração, uma posição full time ou apenas para trocar ideias sobre tecnologia. Adoraria ouvir
-              você!
-            </p>
-            <p>
-              <MapPinHouse /> São José dos Campos, SP
+              <MapPinHouse /> {contact.location}
             </p>
             <Button onClick={openModal}>
-              <Mail /> Enviar mensagem <Send />
+              <Mail /> {actions.sendMessage} <Send />
             </Button>
           </div>
 
           <div>
-            <h3>Me encontre nas redes</h3>
+            <h3>{contact.networksTitle}</h3>
             <ul>
-              <li>
-                <span>
-                  <FiGithub />
-                </span>
-                <div>
-                  <h4>GitHub</h4>
-                  <a href='https://github.com' target='_blank' rel='noopener noreferrer' aria-label='Abrir GitHub'>
-                    yasminalves16
-                  </a>
-                </div>
-              </li>
+              {socialLinks.map((link) => {
+                const Icon = socialIcons[link.id];
+                const a11yLabel = a11y[socialA11yKeys[link.id]];
 
-              <li>
-                <span>
-                  <FiLinkedin />
-                </span>
-                <div>
-                  <h4>LinkedIn</h4>
-                  <a href='https://linkedin.com/in/yasminalves16' target='_blank' rel='noopener noreferrer' aria-label='Abrir LinkedIn'>
-                    /in/devyasmin/
-                  </a>
-                </div>
-              </li>
-
-              <li>
-                <span>
-                  <MdWhatsapp />
-                </span>
-                <div>
-                  <h4>WhatsApp</h4>
-                  <a href='https://wa.me/5512983191908' target='_blank' rel='noopener noreferrer' aria-label='Abrir WhatsApp'>
-                    (12) 98319-1908
-                  </a>
-                </div>
-              </li>
-
-              <li>
-                <span>
-                  <Mail />
-                </span>
-                <div>
-                  <h4>Email</h4>
-                  <a href='mailto:yasmin_dev@outlook.com' target='_blank' rel='noopener noreferrer' aria-label='Enviar email'>
-                    yasmin_dev@outlook.com
-                  </a>
-                </div>
-              </li>
+                return (
+                  <li key={link.id}>
+                    <span>
+                      <Icon />
+                    </span>
+                    <div>
+                      <h4>{link.label}</h4>
+                      <a
+                        href={link.href}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        aria-label={a11yLabel}
+                      >
+                        {link.display}
+                      </a>
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>

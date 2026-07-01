@@ -1,31 +1,36 @@
 'use client';
+
+import { useMessages } from '@/src/hooks/use-messages';
 import { Send, X } from 'lucide-react';
 import Form from 'next/form';
 
 export function ContactFormModal({ closeModal }: { closeModal: () => void }) {
+  const { sections, actions, a11y } = useMessages();
+  const { contact } = sections;
+
   return (
     <div>
       <header>
         <div>
-          <h2 id="contact-title">Enviar mensagem</h2>
-          <p id="contact-description">Preencha o formulário abaixo</p>
+          <h2 id='contact-title'>{contact.formTitle}</h2>
+          <p id='contact-description'>{contact.formDescription}</p>
         </div>
-        <button aria-label='Fechar formulário de contato' onClick={closeModal}>
+        <button aria-label={a11y.closeContactForm} onClick={closeModal}>
           <X />
         </button>
       </header>
-      <hr/>
+      <hr />
       <Form action='/send-message'>
-        <label htmlFor='name'>Nome</label>
-        <input type='text' name='name' id='name' placeholder='Seu nome' required />
-        <label htmlFor='email'>Email</label>
-        <input type='email' name='email' id='email' placeholder='seu@email.com' required />
-        <label htmlFor='subject'>Assunto</label>
-        <input type='text' name='subject' id='subject' placeholder='Sobre o que gostaria de falar?' required />
-        <label htmlFor='message'>Mensagem</label>
-        <textarea name='message' id='message' placeholder='Escreva sua mensagem aqui...' required></textarea>
+        <label htmlFor='name'>{contact.form.nameLabel}</label>
+        <input type='text' name='name' id='name' placeholder={contact.form.namePlaceholder} required />
+        <label htmlFor='email'>{contact.form.emailLabel}</label>
+        <input type='email' name='email' id='email' placeholder={contact.form.emailPlaceholder} required />
+        <label htmlFor='subject'>{contact.form.subjectLabel}</label>
+        <input type='text' name='subject' id='subject' placeholder={contact.form.subjectPlaceholder} required />
+        <label htmlFor='message'>{contact.form.messageLabel}</label>
+        <textarea name='message' id='message' placeholder={contact.form.messagePlaceholder} required></textarea>
         <button type='submit'>
-          <Send /> Enviar mensagem
+          <Send /> {actions.sendMessage}
         </button>
       </Form>
     </div>
