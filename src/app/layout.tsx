@@ -19,13 +19,30 @@ export const metadata: Metadata = {
     'Portfólio de Yasmin Alves, desenvolvedora front-end com foco em produto. Explore projetos, habilidades e experiência em React, JavaScript e TypeScript.'
 };
 
+const themeScript = `
+(function () {
+  try {
+    var theme = localStorage.getItem('theme');
+    var valid = ['light', 'dark', 'dark-blue'];
+    if (!valid.includes(theme)) theme = 'dark-blue';
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.classList.remove('dark', 'dark-blue');
+    if (theme === 'dark') document.documentElement.classList.add('dark');
+    if (theme === 'dark-blue') document.documentElement.classList.add('dark-blue');
+  } catch (e) {}
+})();
+`;
+
 export default function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='pt-br' className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+    <html lang='pt-br' className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className='min-h-full flex flex-col'>
         <Providers>{children}</Providers>
       </body>
