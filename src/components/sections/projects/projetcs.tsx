@@ -47,8 +47,11 @@ export function Projects() {
   return (
     <section id='projects'>
       <Container>
-        <RichHeading segments={projectsMessages.title} as='h2' />
-        <p>{projectsMessages.description}</p>
+        <div className='mb-6 space-y-4'>
+          <span className='section-badge'>{projectsMessages.badge}</span>
+          <RichHeading segments={projectsMessages.title} as='h2' />
+          <p className='max-w-2xl text-muted-foreground'>{projectsMessages.description}</p>
+        </div>
 
         <ProjectFilters
           category={category}
@@ -58,12 +61,16 @@ export function Projects() {
           onClear={handleClear}
         />
 
-        {!hasResults && <p>{projectsMessages.emptyMessage}</p>}
+        {!hasResults && (
+          <p className='rounded-xl border border-dashed border-border p-8 text-center text-muted-foreground'>
+            {projectsMessages.emptyMessage}
+          </p>
+        )}
 
         {filteredFeatured.length > 0 && (
-          <section>
-            <h3>{projectsMessages.featuredTitle}</h3>
-            <ul>
+          <section className='mb-12'>
+            <h3 className='mb-6 text-xl font-semibold'>{projectsMessages.featuredTitle}</h3>
+            <ul className='grid gap-6 md:grid-cols-2'>
               {filteredFeatured.map((project) => (
                 <ProjectCard key={project.slug} project={project} variant='featured' />
               ))}
@@ -72,9 +79,9 @@ export function Projects() {
         )}
 
         {filteredMore.length > 0 && (
-          <section>
-            <h3>{projectsMessages.moreTitle}</h3>
-            <ul>
+          <section className='mb-8'>
+            <h3 className='mb-6 text-xl font-semibold'>{projectsMessages.moreTitle}</h3>
+            <ul className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
               {filteredMore.map((project) => (
                 <ProjectCard key={project.slug} project={project} />
               ))}
@@ -88,6 +95,7 @@ export function Projects() {
             target='_blank'
             rel='noopener noreferrer'
             aria-label={a11y.moreProjectsOnGithub}
+            className='inline-flex items-center gap-2 font-medium text-primary hover:underline'
           >
             {actions.viewMoreOnGithub} <FiGithub />
           </Link>
