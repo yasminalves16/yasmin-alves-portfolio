@@ -1,115 +1,123 @@
-import { Folder, Funnel } from 'lucide-react';
-import { FiArrowRight, FiGithub } from 'react-icons/fi';
-import { Button } from '../../ui/button';
+'use client';
+
+import { HoverCard } from '@/src/components/motion/hover-card';
+import { Reveal } from '@/src/components/motion/reveal';
+import { SectionHeader } from '@/src/components/motion/section-header';
+import { Stagger, StaggerItem } from '@/src/components/motion/stagger';
+import { getSocialLink } from '@/src/data';
+import { fadeUp } from '@/src/lib/motion';
+import { useMessages } from '@/src/hooks/use-messages';
+import { usePortfolioData } from '@/src/hooks/use-portfolio-data';
+import { filterProjects, type ProjectCategoryFilter } from '@/src/lib/project-filters';
+import { useMemo, useState } from 'react';
+import { FiGithub } from 'react-icons/fi';
+import Link from 'next/link';
+import { ProjectCard } from '../../projects/project-card';
+import { ProjectFilters } from '../../projects/project-filters';
 import { Container } from '../../ui/container';
 
-import Link from 'next/link';
-
 export function Projects() {
+  const { featuredProjects, moreProjects } = usePortfolioData();
+  const { sections, actions, a11y } = useMessages();
+  const { projects: projectsMessages } = sections;
+  const githubLink = getSocialLink('github');
+
+  const [category, setCategory] = useState<ProjectCategoryFilter>('all');
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
+  const filteredFeatured = useMemo(
+    () => filterProjects(featuredProjects, category, selectedTags),
+    [featuredProjects, category, selectedTags]
+  );
+
+  const filteredMore = useMemo(
+    () => filterProjects(moreProjects, category, selectedTags),
+    [moreProjects, category, selectedTags]
+  );
+
+  const handleTagToggle = (tag: string) => {
+    setSelectedTags((current) =>
+      current.includes(tag) ? current.filter((item) => item !== tag) : [...current, tag]
+    );
+  };
+
+  const handleClear = () => {
+    setCategory('all');
+    setSelectedTags([]);
+  };
+
+  const hasResults = filteredFeatured.length > 0 || filteredMore.length > 0;
+
   return (
     <section id='projects'>
       <Container>
-        <h2>Projetos</h2>
-        <p>
-          Uma seleção de projetos que demonstram minhas habilidades em desenvolvimento web, desde aplicações web complexas até soluções
-          simples e eficientes.
-        </p>
-        <div aria-labelledby='filter-title'>
-          <p id='filter-title'>
-            <Funnel /> Filtrar por tecnologias:
-          </p>
-          <ul>
-            <li>
-              <Button> React </Button>
-            </li>
-            <li>
-              <Button> TypeScript </Button>
-            </li>
-            <li>
-              <Button> Next.js </Button>
-            </li>
-            <li>
-              <Button> Node.js </Button>
-            </li>
-            <li>
-              <Button> Java </Button>
-            </li>
-            <li>
-              <Button> Spring Boot </Button>
-            </li>
-            <li>
-              <Button> PostgreSQL </Button>
-            </li>
-            <li>
-              <Button> Styled-Components </Button>
-            </li>
-            <li>
-              <Button> Tailwind CSS </Button>
-            </li>
-          </ul>
-          <Button> Limpar Filtros </Button>
-        </div>
-        <section>
-          <h3>Projetos em Destaque</h3>
-          <ul>
-            <li>
-              <article>
-                <div>
-                  {/* <Image src='/project1.png' alt='descrição breve da foto + nome do projeto'/> */}
-                  {/* <span>tag que descreve um ponto alto do do projeto tipo "Aplicação Real"</span> */}
-                </div>
+        <SectionHeader
+          badge={projectsMessages.badge}
+          title={projectsMessages.title}
+          description={projectsMessages.description}
+        />
 
-                <h4>Plataforma de Acompanhamento Terapêutico</h4>
-                <p>Sistema completo para gestão clínica com acompanhamento de terapeutas</p>
-                <ul>
-                  <li> React</li>
-                  <li> TypeScript </li>
-                  <li> Chart.js</li>
-                </ul>
-                <Link href='/projetos/plataforma-de-acompanhamento-terapeutico' aria-label='Ver detalhes do projeto Plataforma de Acompanhamento Terapêutico'>
-                  Ver detalhes <FiArrowRight />
-                </Link>
-              </article>
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h3>Mais projetos</h3>
-          <ul>
-            <li>
-              <article>
-                <div>
-                  <Folder />
-                  <div>
-                    <a
-                      href='https://github.com'
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      aria-label='Abrir GitHub do projeto Sistema de Gestão de Pedidos'
-                    >
-                      <FiGithub />
-                    </a>
-                    <Link href='/projetos/sistema-gestao-de-pedidos' aria-label='Ver detalhes do projeto Sistema de Gestão de Pedidos'>
-                      <FiArrowRight />
-                    </Link>
-                  </div>
-                </div>
+        <Reveal delay={0.1}>
+          <ProjectFilters
+            category={category}
+            selectedTags={selectedTags}
+            onCategoryChange={setCategory}
+            onTagToggle={handleTagToggle}
+            onClear={handleClear}
+          />
+        </Reveal>
 
-                <h4>Sistema de Gestão de Pedidos</h4>
-                <p>Sistema para gerenciamento de pedidos, produtos e fluxos de vendas.</p>
-                <ul>
-                  <li> React </li>
-                  <li> TypeScript </li>
-                  <li> Chart.js</li>
-                </ul>
-              </article>
-            </li>
-          </ul>
-        </section>
+        {!hasResults && (
+          <Reveal>
+            <p className='rounded-xl border border-dashed border-border p-8 text-center text-muted-foreground'>
+              {projectsMessages.emptyMessage}
+            </p>
+          </Reveal>
+        )}
 
-        <Link href='https://github.com' target='_blank' rel='noopener noreferrer' aria-label='Ver mais projetos no GitHub yasminalves16'>
-          Ver mais no GitHub <FiGithub />
-        </Link>
+        {filteredFeatured.length > 0 && (
+          <section className='mb-12'>
+            <Reveal as='header'>
+              <h3 className='mb-6 text-xl font-semibold'>{projectsMessages.featuredTitle}</h3>
+            </Reveal>
+            <Stagger as='ul' className='grid gap-6 md:grid-cols-2'>
+              {filteredFeatured.map((project) => (
+                <StaggerItem key={project.slug} as='li'>
+                  <ProjectCard project={project} variant='featured' />
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </section>
+        )}
+
+        {filteredMore.length > 0 && (
+          <section className='mb-8'>
+            <Reveal as='header'>
+              <h3 className='mb-6 text-xl font-semibold'>{projectsMessages.moreTitle}</h3>
+            </Reveal>
+            <Stagger as='ul' className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
+              {filteredMore.map((project) => (
+                <StaggerItem key={project.slug} as='li'>
+                  <ProjectCard project={project} />
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </section>
+        )}
+
+        {githubLink && (
+          <Reveal variants={fadeUp}>
+            <Link
+              href={githubLink.href}
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label={a11y.moreProjectsOnGithub}
+              className='inline-flex items-center gap-2 font-medium text-primary hover:underline'
+            >
+              {actions.viewMoreOnGithub} <FiGithub />
+            </Link>
+          </Reveal>
+        )}
       </Container>
     </section>
   );

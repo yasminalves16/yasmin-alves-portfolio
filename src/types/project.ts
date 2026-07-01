@@ -1,5 +1,7 @@
 export type ProjectSlug = string;
 
+export type ProjectCategory = 'management' | 'development';
+
 export type ProjectMedia = {
   src: string;
   alt: string;
@@ -11,6 +13,7 @@ export type ProjectBase = {
   summary: string;
   tags: string[];
   featured: boolean;
+  category: ProjectCategory;
   githubUrl?: string;
   demoUrl?: string;
   cover?: ProjectMedia;
