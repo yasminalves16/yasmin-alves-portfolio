@@ -15,16 +15,21 @@ const ThemeContext = createContext<ThemeContextType>({
   themes: THEME_IDS
 });
 
-export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<ThemeId>(DEFAULT_THEME);
+function readInitialTheme(): ThemeId {
+  if (typeof window === 'undefined') {
+    return DEFAULT_THEME;
+  }
 
-  // Hidratar do localStorage apenas no cliente
-  useLayoutEffect(() => {
-    const stored = localStorage.getItem('theme') as ThemeId | null;
-    if (stored && THEME_IDS.includes(stored)) {
-      setThemeState(stored);
-    }
-  }, []);
+  const stored = localStorage.getItem('theme');
+  if (stored && THEME_IDS.includes(stored as ThemeId)) {
+    return stored as ThemeId;
+  }
+
+  return DEFAULT_THEME;
+}
+
+export function ThemeProvider({ children }: { children: ReactNode }) {
+  const [theme, setThemeState] = useState<ThemeId>(readInitialTheme);
 
   // Sincronizar mudanças de tema
   useLayoutEffect(() => {

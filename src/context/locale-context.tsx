@@ -13,16 +13,21 @@ const LocaleContext = createContext<LocaleContextType>({
   setLocale: () => {}
 });
 
-export function LocaleProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocale] = useState<LocaleCode>(DEFAULT_LOCALE);
+function readInitialLocale(): LocaleCode {
+  if (typeof window === 'undefined') {
+    return DEFAULT_LOCALE;
+  }
 
-  // Hidratar do localStorage apenas no cliente
-  useLayoutEffect(() => {
-    const stored = localStorage.getItem('locale') as LocaleCode | null;
-    if (stored && (stored === 'pt-BR' || stored === 'en-US')) {
-      setLocale(stored);
-    }
-  }, []);
+  const stored = localStorage.getItem('locale');
+  if (stored === 'pt-BR' || stored === 'en-US') {
+    return stored;
+  }
+
+  return DEFAULT_LOCALE;
+}
+
+export function LocaleProvider({ children }: { children: ReactNode }) {
+  const [locale, setLocale] = useState<LocaleCode>(readInitialLocale);
 
   // Sincronizar mudanças de locale
   useLayoutEffect(() => {

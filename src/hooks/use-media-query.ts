@@ -7,15 +7,16 @@ import { useLayoutEffect, useState } from 'react';
  * Usa media queries do Tailwind
  */
 export function useMediaQuery(query: string): boolean {
-  const [matches, setMatches] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const [matches, setMatches] = useState(() => {
+    if (typeof window === 'undefined') {
+      return false;
+    }
+
+    return window.matchMedia(query).matches;
+  });
 
   useLayoutEffect(() => {
     const mediaQuery = window.matchMedia(query);
-
-    // Sincronizar estado inicial
-    setMatches(mediaQuery.matches);
-    setMounted(true);
 
     // Listener para mudanças
     const handler = (event: MediaQueryListEvent) => {
@@ -33,8 +34,7 @@ export function useMediaQuery(query: string): boolean {
     return () => mediaQuery.removeListener(handler);
   }, [query]);
 
-  // Retornar false durante SSR/hydration para evitar mismatches
-  return mounted ? matches : false;
+  return matches;
 }
 
 /**
