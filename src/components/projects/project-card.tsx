@@ -1,5 +1,6 @@
 'use client';
 
+import { HoverCard } from '@/src/components/motion/hover-card';
 import { useMessages } from '@/src/hooks/use-messages';
 import type { ProjectListItem } from '@/src/types/project';
 import { cn } from '@/src/lib/utils';
@@ -35,58 +36,60 @@ export function ProjectCard({ project, variant = 'compact' }: ProjectCardProps) 
 
   if (variant === 'featured') {
     return (
-      <li>
-        <article className='flex h-full flex-col rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/50'>
-          {project.badge && (
-            <span className='mb-3 inline-block w-fit rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary'>
-              {project.badge}
-            </span>
-          )}
-          <h4 className='mb-2 text-lg font-semibold'>{project.title}</h4>
-          <p className='mb-4 flex-1 text-sm text-muted-foreground'>{project.summary}</p>
-          <TagList tags={project.tags} />
-          <Link
-            href={`/projetos/${project.slug}`}
-            aria-label={`${a11y.projectDetailsPrefix} ${project.title}`}
-            className='mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline'
-          >
-            {actions.viewDetails} <FiArrowRight />
-          </Link>
-        </article>
-      </li>
+      <HoverCard
+        as='article'
+        className='flex h-full flex-col rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/50'
+      >
+        {project.badge && (
+          <span className='mb-3 inline-block w-fit rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary'>
+            {project.badge}
+          </span>
+        )}
+        <h4 className='mb-2 text-lg font-semibold'>{project.title}</h4>
+        <p className='mb-4 flex-1 text-sm text-muted-foreground'>{project.summary}</p>
+        <TagList tags={project.tags} />
+        <Link
+          href={`/projetos/${project.slug}`}
+          aria-label={`${a11y.projectDetailsPrefix} ${project.title}`}
+          className='mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline'
+        >
+          {actions.viewDetails} <FiArrowRight />
+        </Link>
+      </HoverCard>
     );
   }
 
   return (
-    <li>
-      <article className='flex h-full flex-col rounded-xl border border-border bg-card p-5 transition-colors hover:border-primary/50'>
-        <div className='mb-4 flex items-center justify-between'>
-          <Folder className='text-primary' size={20} aria-hidden />
-          <div className='flex items-center gap-2'>
-            {project.githubUrl && (
-              <a
-                href={project.githubUrl}
-                target='_blank'
-                rel='noopener noreferrer'
-                aria-label={`${a11y.openGithub}: ${project.title}`}
-                className='text-muted-foreground transition-colors hover:text-primary'
-              >
-                <FiGithub />
-              </a>
-            )}
-            <Link
-              href={`/projetos/${project.slug}`}
-              aria-label={`${a11y.projectDetailsPrefix} ${project.title}`}
+    <HoverCard
+      as='article'
+      className='flex h-full flex-col rounded-xl border border-border bg-card p-5 transition-colors hover:border-primary/50'
+    >
+      <div className='mb-4 flex items-center justify-between'>
+        <Folder className='text-primary' size={20} aria-hidden />
+        <div className='flex items-center gap-2'>
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label={`${a11y.openGithub}: ${project.title}`}
               className='text-muted-foreground transition-colors hover:text-primary'
             >
-              <FiArrowRight />
-            </Link>
-          </div>
+              <FiGithub />
+            </a>
+          )}
+          <Link
+            href={`/projetos/${project.slug}`}
+            aria-label={`${a11y.projectDetailsPrefix} ${project.title}`}
+            className='text-muted-foreground transition-colors hover:text-primary'
+          >
+            <FiArrowRight />
+          </Link>
         </div>
-        <h4 className='mb-2 font-semibold'>{project.title}</h4>
-        <p className='mb-4 flex-1 text-sm text-muted-foreground'>{project.summary}</p>
-        <TagList tags={project.tags} size='sm' />
-      </article>
-    </li>
+      </div>
+      <h4 className='mb-2 font-semibold'>{project.title}</h4>
+      <p className='mb-4 flex-1 text-sm text-muted-foreground'>{project.summary}</p>
+      <TagList tags={project.tags} size='sm' />
+    </HoverCard>
   );
 }

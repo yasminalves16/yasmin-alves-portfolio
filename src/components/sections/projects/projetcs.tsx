@@ -1,6 +1,11 @@
 'use client';
 
+import { HoverCard } from '@/src/components/motion/hover-card';
+import { Reveal } from '@/src/components/motion/reveal';
+import { SectionHeader } from '@/src/components/motion/section-header';
+import { Stagger, StaggerItem } from '@/src/components/motion/stagger';
 import { getSocialLink } from '@/src/data';
+import { fadeUp } from '@/src/lib/motion';
 import { useMessages } from '@/src/hooks/use-messages';
 import { usePortfolioData } from '@/src/hooks/use-portfolio-data';
 import { filterProjects, type ProjectCategoryFilter } from '@/src/lib/project-filters';
@@ -10,7 +15,6 @@ import Link from 'next/link';
 import { ProjectCard } from '../../projects/project-card';
 import { ProjectFilters } from '../../projects/project-filters';
 import { Container } from '../../ui/container';
-import { RichHeading } from '../../ui/rich-heading';
 
 export function Projects() {
   const { featuredProjects, moreProjects } = usePortfolioData();
@@ -47,58 +51,72 @@ export function Projects() {
   return (
     <section id='projects'>
       <Container>
-        <div className='mb-6 space-y-4'>
-          <span className='section-badge'>{projectsMessages.badge}</span>
-          <RichHeading segments={projectsMessages.title} as='h2' />
-          <p className='max-w-2xl text-muted-foreground'>{projectsMessages.description}</p>
-        </div>
-
-        <ProjectFilters
-          category={category}
-          selectedTags={selectedTags}
-          onCategoryChange={setCategory}
-          onTagToggle={handleTagToggle}
-          onClear={handleClear}
+        <SectionHeader
+          badge={projectsMessages.badge}
+          title={projectsMessages.title}
+          description={projectsMessages.description}
         />
 
+        <Reveal delay={0.1}>
+          <ProjectFilters
+            category={category}
+            selectedTags={selectedTags}
+            onCategoryChange={setCategory}
+            onTagToggle={handleTagToggle}
+            onClear={handleClear}
+          />
+        </Reveal>
+
         {!hasResults && (
-          <p className='rounded-xl border border-dashed border-border p-8 text-center text-muted-foreground'>
-            {projectsMessages.emptyMessage}
-          </p>
+          <Reveal>
+            <p className='rounded-xl border border-dashed border-border p-8 text-center text-muted-foreground'>
+              {projectsMessages.emptyMessage}
+            </p>
+          </Reveal>
         )}
 
         {filteredFeatured.length > 0 && (
           <section className='mb-12'>
-            <h3 className='mb-6 text-xl font-semibold'>{projectsMessages.featuredTitle}</h3>
-            <ul className='grid gap-6 md:grid-cols-2'>
+            <Reveal as='header'>
+              <h3 className='mb-6 text-xl font-semibold'>{projectsMessages.featuredTitle}</h3>
+            </Reveal>
+            <Stagger as='ul' className='grid gap-6 md:grid-cols-2'>
               {filteredFeatured.map((project) => (
-                <ProjectCard key={project.slug} project={project} variant='featured' />
+                <StaggerItem key={project.slug} as='li'>
+                  <ProjectCard project={project} variant='featured' />
+                </StaggerItem>
               ))}
-            </ul>
+            </Stagger>
           </section>
         )}
 
         {filteredMore.length > 0 && (
           <section className='mb-8'>
-            <h3 className='mb-6 text-xl font-semibold'>{projectsMessages.moreTitle}</h3>
-            <ul className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
+            <Reveal as='header'>
+              <h3 className='mb-6 text-xl font-semibold'>{projectsMessages.moreTitle}</h3>
+            </Reveal>
+            <Stagger as='ul' className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
               {filteredMore.map((project) => (
-                <ProjectCard key={project.slug} project={project} />
+                <StaggerItem key={project.slug} as='li'>
+                  <ProjectCard project={project} />
+                </StaggerItem>
               ))}
-            </ul>
+            </Stagger>
           </section>
         )}
 
         {githubLink && (
-          <Link
-            href={githubLink.href}
-            target='_blank'
-            rel='noopener noreferrer'
-            aria-label={a11y.moreProjectsOnGithub}
-            className='inline-flex items-center gap-2 font-medium text-primary hover:underline'
-          >
-            {actions.viewMoreOnGithub} <FiGithub />
-          </Link>
+          <Reveal variants={fadeUp}>
+            <Link
+              href={githubLink.href}
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label={a11y.moreProjectsOnGithub}
+              className='inline-flex items-center gap-2 font-medium text-primary hover:underline'
+            >
+              {actions.viewMoreOnGithub} <FiGithub />
+            </Link>
+          </Reveal>
         )}
       </Container>
     </section>
