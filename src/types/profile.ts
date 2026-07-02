@@ -7,6 +7,8 @@ export type ProfileDocument = {
 
 export type Profile = {
   name: string;
+  age: number;
+  stacks: string[];
   role: string;
   roleExtended?: string;
   tagline: string;
