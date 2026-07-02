@@ -2,39 +2,41 @@
 
 import { useEffect, useState } from 'react';
 
+const ACTIVATION_OFFSET = 120;
+
+function getSectionTop(element: HTMLElement) {
+  return element.getBoundingClientRect().top + window.scrollY;
+}
+
 export function useActiveSection(sectionIds: readonly string[]) {
   const [activeSection, setActiveSection] = useState(sectionIds[0]);
 
   useEffect(() => {
     const updateActiveSection = () => {
-      const viewportCenter = window.innerHeight * 0.4;
-      let closestId = sectionIds[0];
-      let closestDistance = Infinity;
+      const scrollPosition = window.scrollY + ACTIVATION_OFFSET;
+      let currentId = sectionIds[0];
 
       for (const id of sectionIds) {
         const element = document.getElementById(id);
         if (!element) continue;
 
-        const rect = element.getBoundingClientRect();
-        const sectionCenter = rect.top + rect.height / 2;
-        const distance = Math.abs(sectionCenter - viewportCenter);
-
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestId = id;
+        if (scrollPosition >= getSectionTop(element)) {
+          currentId = id;
         }
       }
 
-      setActiveSection(closestId);
+      setActiveSection(currentId);
     };
 
     updateActiveSection();
     window.addEventListener('scroll', updateActiveSection, { passive: true });
     window.addEventListener('resize', updateActiveSection);
+    window.addEventListener('hashchange', updateActiveSection);
 
     return () => {
       window.removeEventListener('scroll', updateActiveSection);
       window.removeEventListener('resize', updateActiveSection);
+      window.removeEventListener('hashchange', updateActiveSection);
     };
   }, [sectionIds]);
 

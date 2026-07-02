@@ -2,8 +2,8 @@
 
 import { fadeUp, stagger, transition, VIEWPORT } from '@/src/lib/motion';
 import { cn } from '@/src/lib/utils';
-import { motion, useReducedMotion, type Variants } from 'framer-motion';
-import type { ReactNode } from 'react';
+import { motion, useInView, useReducedMotion, type Variants } from 'framer-motion';
+import { type ReactNode, useEffect, useRef, useState } from 'react';
 
 type StaggerProps = {
   children: ReactNode;
@@ -13,23 +13,34 @@ type StaggerProps = {
 
 export function Stagger({ children, className, as = 'div' }: StaggerProps) {
   const prefersReducedMotion = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, VIEWPORT);
+  const [forceVisible, setForceVisible] = useState(false);
   const Component = motion[as];
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setForceVisible(true), 1200);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   if (prefersReducedMotion) {
     const Tag = as;
     return <Tag className={className}>{children}</Tag>;
   }
 
+  const visible = isInView || forceVisible;
+
   return (
-    <Component
-      initial='hidden'
-      whileInView='visible'
-      viewport={VIEWPORT}
-      variants={stagger}
-      className={cn(className)}
-    >
-      {children}
-    </Component>
+    <div ref={ref} className='contents'>
+      <Component
+        initial='hidden'
+        animate={visible ? 'visible' : 'hidden'}
+        variants={stagger}
+        className={cn(className)}
+      >
+        {children}
+      </Component>
+    </div>
   );
 }
 

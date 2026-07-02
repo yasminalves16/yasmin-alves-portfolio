@@ -17,12 +17,19 @@ export default {
   },
   sections: {
     hero: {
-      title: 'Yasmin Alves',
-      subtitle: '< Desenvolvedora Front-End com foco em produto >',
-      description: 'Desenvolvedora Front-End com foco em produto',
       paragraphs: [
         'Experiência em gestão de projetos, metodologias ágeis e desenvolvimento web com React, JavaScript e TypeScript.'
       ]
+    },
+    hero2: {
+      badge: '// como eu construo',
+      headline: [
+        { kind: 'text', value: 'Do dado ao ' },
+        { kind: 'emphasis', value: 'componente' }
+      ],
+      description:
+        'Construo interfaces com React e TypeScript — da modelagem dos dados à entrega do componente. Componentização, gestão ágil e mentoria fazem parte do meu dia a dia.',
+      tags: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Framer Motion']
     },
     about: {
       title: 'Sobre mim',
@@ -104,11 +111,12 @@ export default {
       ],
       academicTitle: 'Formação Acadêmica',
       certificationsTitle: 'Certificações',
-      inProgress: 'Em andamento'
+      inProgress: 'Em andamento',
+      viewCredential: 'Ver credencial'
     },
     contact: {
-      badge: 'Contato',
-      heading: [
+      badge: '06 // contato',
+      title: [
         { kind: 'text', value: 'Vamos trabalhar ' },
         { kind: 'emphasis', value: 'juntos' },
         { kind: 'text', value: '?' }
@@ -117,9 +125,9 @@ export default {
         'Estou sempre aberta a discutir novos projetos, ideias criativas ou oportunidades de fazer parte de suas visões.',
       getInTouchTitle: 'Entre em contato',
       getInTouchDescription:
-        'Seja pra uma oportunidade de colaboração, uma posição full time ou apenas para trocar ideias sobre tecnologia. Adoraria ouvir você!',
+        'Seja para um projeto freelance, uma posição full-time ou apenas para trocar ideias sobre tecnologia — adoraria ouvir você.',
       networksTitle: 'Me encontre nas redes',
-      location: 'São José dos Campos, SP',
+      location: 'São José dos Campos, SP — Brasil',
       formTitle: 'Enviar mensagem',
       formDescription: 'Preencha o formulário abaixo',
       form: {

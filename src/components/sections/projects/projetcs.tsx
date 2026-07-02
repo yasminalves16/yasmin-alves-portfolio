@@ -1,6 +1,5 @@
 'use client';
 
-import { HoverCard } from '@/src/components/motion/hover-card';
 import { Reveal } from '@/src/components/motion/reveal';
 import { SectionHeader } from '@/src/components/motion/section-header';
 import { Stagger, StaggerItem } from '@/src/components/motion/stagger';

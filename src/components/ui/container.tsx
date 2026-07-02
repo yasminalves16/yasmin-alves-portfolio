@@ -10,7 +10,7 @@ export function Container({ children, className = '', asSection = true }: Contai
   return (
     <div
       className={cn(
-        'mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8',
+        'mx-auto w-full max-w-[1400px] px-6 sm:px-10 lg:px-16 xl:px-20',
         asSection && 'py-16 md:py-24',
         className
       )}

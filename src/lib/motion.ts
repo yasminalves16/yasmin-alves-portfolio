@@ -2,8 +2,8 @@ export const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 
 export const VIEWPORT = {
   once: true,
-  margin: '-48px 0px -48px 0px' as const,
-  amount: 0.15
+  amount: 'some' as const,
+  margin: '0px 0px -100px 0px' as const
 };
 
 export const fadeUp = {

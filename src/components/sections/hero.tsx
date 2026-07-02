@@ -5,11 +5,11 @@ import { EASE_OUT, fadeUp, scaleIn, slideFromLeft, transition } from '@/src/lib/
 import { useMessages } from '@/src/hooks/use-messages';
 import { usePortfolioData } from '@/src/hooks/use-portfolio-data';
 import { motion, useReducedMotion } from 'framer-motion';
-import Link from 'next/link';
 import { FiArrowRight, FiGithub, FiLinkedin } from 'react-icons/fi';
 import { MdOutlineFileDownload, MdWhatsapp } from 'react-icons/md';
 import { buttonClassName } from '../ui/button';
 import { Container } from '../ui/container';
+import { HeroAvatarMedia } from './hero/hero-avatar-media';
 
 const socialIcons = {
   github: FiGithub,
@@ -60,19 +60,11 @@ export function Hero() {
           >
             <div className='relative'>
               <motion.div
-                className='absolute inset-0 rounded-full border border-primary/30'
+                className='absolute inset-0 rounded-[2.5rem] border border-primary/30'
                 animate={prefersReducedMotion ? undefined : { scale: [1, 1.03, 1] }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               />
-              <video
-                src='/assets/hero/iayasmin.mp4'
-                aria-label={a11y.decorativeHeroVideo}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className='relative z-10 w-full max-w-[280px] rounded-full sm:max-w-[320px] lg:max-w-[400px]'
-              />
+              <HeroAvatarMedia />
             </div>
           </motion.div>
 
@@ -110,9 +102,10 @@ export function Hero() {
               variants={fadeUp}
               transition={transition}
             >
-              <Link href='#projects' className={buttonClassName({ className: 'w-full sm:w-auto' })}>
-                {actions.viewProjects} <FiArrowRight />
-              </Link>
+              <a href='#projects' className={buttonClassName({ className: 'w-full gap-2 sm:w-auto' })}>
+                {actions.viewProjects}
+                <FiArrowRight size={16} aria-hidden />
+              </a>
               <div className='hidden flex-col gap-3 sm:flex-row md:flex'>
                 {profile.documents.map((document) => (
                   <a
@@ -120,16 +113,17 @@ export function Hero() {
                     href={document.href}
                     download={document.filename}
                     aria-label={`${a11y.downloadDocumentPrefix}: ${document.label}`}
-                    className={buttonClassName({ variant: 'outline', className: 'w-full sm:w-auto' })}
+                    className={buttonClassName({ variant: 'outline', className: 'w-full gap-2 sm:w-auto' })}
                   >
-                    {document.label} <MdOutlineFileDownload />
+                    {document.label}
+                    <MdOutlineFileDownload size={16} aria-hidden />
                   </a>
                 ))}
               </div>
             </motion.div>
 
             <motion.ul
-              className='flex items-center justify-center gap-3 lg:justify-start'
+              className='flex items-center justify-center gap-2 lg:justify-start'
               variants={fadeUp}
               transition={transition}
             >
@@ -144,12 +138,12 @@ export function Hero() {
                       target='_blank'
                       rel='noopener noreferrer'
                       aria-label={a11y[a11yKey]}
-                      className='flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-foreground transition-colors hover:bg-primary hover:text-primary-foreground'
+                      className='utility-btn h-9 w-9 text-muted-foreground hover:text-foreground'
                       whileHover={prefersReducedMotion ? undefined : { scale: 1.08 }}
                       whileTap={prefersReducedMotion ? undefined : { scale: 0.95 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <Icon />
+                      <Icon size={16} aria-hidden />
                     </motion.a>
                   </li>
                 );
