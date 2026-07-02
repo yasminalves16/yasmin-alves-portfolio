@@ -37,13 +37,15 @@ export default {
         { kind: 'text', value: 'Turning ideas into ' },
         { kind: 'emphasis', value: 'code' }
       ],
-      roleLabel: 'Project Coordinator',
+      intro:
+        'I build interfaces with React, JavaScript and TypeScript — from data modeling to component delivery.',
       paragraphs: [
-        'I am a Project Coordinator with experience in team management, agile methodologies and technology solution development. I connect business and technology, leading projects end-to-end.',
-        'I have a technical background in web development with React, JavaScript and TypeScript, which gives me a complete view of projects and helps bridge technical and business teams.',
-        'Experience in automation projects (RPA), process analysis, squad management and technical mentorship, always seeking to deliver value and develop people.',
-        'Currently pursuing a Computer Science degree and specializing in Generative AI and Cloud Computing with Google Cloud and Microsoft Azure certifications.'
+        'I aim for organized, componentized code that is easy to evolve, with a strong focus on the end-user experience.',
+        'My path blends front-end development and agile management. As a Scrum Master, I facilitate ceremonies, organize the backlog and track deliveries — without losing the technical perspective on what is being built.',
+        'I work on real projects with real impact — web platforms, mobile applications and end-to-end deliveries —, always connecting business needs to practical implementation.',
+        'Currently pursuing a Computer Science degree, with a focus on mobile and backend development.'
       ],
+      imageAlt: 'Yasmin at her development setup',
       pillars: [
         {
           title: 'Clean Code',
@@ -61,6 +63,11 @@ export default {
         {
           title: 'Product mindset',
           description: 'Working near product decisions, connecting business needs to technical implementation.'
+        },
+        {
+          title: 'Real Impact',
+          description:
+            'Experience building solutions used in everyday life — from clinical platforms to mobile apps — with a focus on delivering concrete value to end users.'
         }
       ]
     },
@@ -89,6 +96,7 @@ export default {
       categoryAll: 'All',
       categoryManagement: 'Management',
       categoryDevelopment: 'Development',
+      categoryMobile: 'Mobile',
       featuredTitle: 'Featured projects',
       moreTitle: 'More projects',
       emptyMessage: 'No projects match the selected filters.'
@@ -162,7 +170,8 @@ export default {
     backToHome: 'Back to home',
     mainNavigation: 'Main navigation',
     closeContactForm: 'Close contact form',
-    decorativeHeroVideo: 'Decorative presentation video, no audio',
+    decorativeHeroVideo: 'Decorative presentation video',
+    enableHeroVideoSound: 'Enable video sound',
     openGithub: 'Open GitHub',
     openLinkedin: 'Open LinkedIn',
     openWhatsapp: 'Open WhatsApp',
