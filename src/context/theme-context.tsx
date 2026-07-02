@@ -1,7 +1,18 @@
 'use client';
 
 import { DEFAULT_THEME, THEME_IDS, ThemeId } from '@/src/types/theme';
-import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useLayoutEffect, useState } from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useLayoutEffect,
+  useSyncExternalStore,
+  type Dispatch,
+  type ReactNode,
+  type SetStateAction
+} from 'react';
+
+const THEME_CHANGE_EVENT = 'portfolio-theme-change';
 
 interface ThemeContextType {
   theme: ThemeId;
@@ -15,11 +26,7 @@ const ThemeContext = createContext<ThemeContextType>({
   themes: THEME_IDS
 });
 
-function readInitialTheme(): ThemeId {
-  if (typeof window === 'undefined') {
-    return DEFAULT_THEME;
-  }
-
+function readStoredTheme(): ThemeId {
   const stored = localStorage.getItem('theme');
   if (stored && THEME_IDS.includes(stored as ThemeId)) {
     return stored as ThemeId;
@@ -40,17 +47,28 @@ function applyThemeClass(theme: ThemeId) {
   }
 }
 
+function subscribeToTheme(onStoreChange: () => void) {
+  window.addEventListener(THEME_CHANGE_EVENT, onStoreChange);
+  window.addEventListener('storage', onStoreChange);
+  return () => {
+    window.removeEventListener(THEME_CHANGE_EVENT, onStoreChange);
+    window.removeEventListener('storage', onStoreChange);
+  };
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<ThemeId>(readInitialTheme);
+  const theme = useSyncExternalStore(subscribeToTheme, readStoredTheme, () => DEFAULT_THEME);
 
   useLayoutEffect(() => {
-    localStorage.setItem('theme', theme);
     applyThemeClass(theme);
   }, [theme]);
 
-  const setTheme = (newTheme: ThemeId | ((prev: ThemeId) => ThemeId)) => {
-    setThemeState(newTheme);
-  };
+  const setTheme = useCallback((newTheme: SetStateAction<ThemeId>) => {
+    const current = readStoredTheme();
+    const next = typeof newTheme === 'function' ? newTheme(current) : newTheme;
+    localStorage.setItem('theme', next);
+    window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
+  }, []);
 
   return <ThemeContext.Provider value={{ theme, setTheme, themes: THEME_IDS }}>{children}</ThemeContext.Provider>;
 }

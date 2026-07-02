@@ -17,12 +17,19 @@ export default {
   },
   sections: {
     hero: {
-      title: 'Yasmin Alves',
-      subtitle: '< Frontend Developer with a focus on product >',
-      description: 'Frontend Developer with a focus on product',
       paragraphs: [
         'Experience in project management, agile methodologies and web development with React, JavaScript and TypeScript.'
       ]
+    },
+    hero2: {
+      badge: '// how I build',
+      headline: [
+        { kind: 'text', value: 'From data to ' },
+        { kind: 'emphasis', value: 'component' }
+      ],
+      description:
+        'I build interfaces with React and TypeScript — from data modeling to component delivery. Componentization, agile management and mentoring are part of my daily work.',
+      tags: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Framer Motion']
     },
     about: {
       title: 'About me',
@@ -103,11 +110,12 @@ export default {
       ],
       academicTitle: 'Academic Education',
       certificationsTitle: 'Certifications',
-      inProgress: 'In progress'
+      inProgress: 'In progress',
+      viewCredential: 'View credential'
     },
     contact: {
-      badge: 'Contact',
-      heading: [
+      badge: '06 // contact',
+      title: [
         { kind: 'text', value: 'Shall we work ' },
         { kind: 'emphasis', value: 'together' },
         { kind: 'text', value: '?' }
@@ -116,9 +124,9 @@ export default {
         "I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.",
       getInTouchTitle: 'Get in touch',
       getInTouchDescription:
-        "Whether it's collaboration, a full-time role or just swapping ideas about technology — I'd love to hear from you!",
+        "Whether it's a freelance project, a full-time role or just swapping ideas about technology — I'd love to hear from you!",
       networksTitle: 'Find me online',
-      location: 'São José dos Campos, SP',
+      location: 'São José dos Campos, SP — Brazil',
       formTitle: 'Send a message',
       formDescription: 'Fill in the form below',
       form: {

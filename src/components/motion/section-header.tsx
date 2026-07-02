@@ -2,8 +2,8 @@
 
 import { fadeUp, transition, VIEWPORT } from '@/src/lib/motion';
 import type { RichHeadingSegment } from '@/src/types/locale';
-import { motion, useReducedMotion } from 'framer-motion';
-import type { ReactNode } from 'react';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
+import { type ReactNode, useEffect, useRef, useState } from 'react';
 import { RichHeading } from '../ui/rich-heading';
 import { Reveal } from './reveal';
 
@@ -17,7 +17,15 @@ type SectionHeaderProps = {
 
 export function SectionHeader({ badge, title, description, className = '', align = 'left' }: SectionHeaderProps) {
   const prefersReducedMotion = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, VIEWPORT);
+  const [forceVisible, setForceVisible] = useState(false);
   const alignClass = align === 'center' ? 'text-center items-center' : 'text-left items-start';
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setForceVisible(true), 1200);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   if (prefersReducedMotion) {
     return (
@@ -29,19 +37,21 @@ export function SectionHeader({ badge, title, description, className = '', align
     );
   }
 
+  const visible = isInView || forceVisible;
+
   return (
-    <motion.div
-      initial='hidden'
-      whileInView='visible'
-      viewport={VIEWPORT}
-      variants={{
-        hidden: {},
-        visible: {
-          transition: { staggerChildren: 0.1, delayChildren: 0.04 }
-        }
-      }}
-      className={`mb-10 flex flex-col space-y-4 md:mb-12 ${alignClass} ${className}`}
-    >
+    <div ref={ref} className='contents'>
+      <motion.div
+        initial='hidden'
+        animate={visible ? 'visible' : 'hidden'}
+        variants={{
+          hidden: {},
+          visible: {
+            transition: { staggerChildren: 0.1, delayChildren: 0.04 }
+          }
+        }}
+        className={`mb-10 flex flex-col space-y-4 md:mb-12 ${alignClass} ${className}`}
+      >
       {badge && (
         <motion.span className='section-badge inline-flex items-center gap-2' variants={fadeUp} transition={transition}>
           {badge}
@@ -57,7 +67,8 @@ export function SectionHeader({ badge, title, description, className = '', align
           {description}
         </motion.p>
       )}
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }
 
