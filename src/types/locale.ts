@@ -5,7 +5,7 @@ export type RichHeadingSegment =
 
 export type ContactSectionMessages = {
   badge: string;
-  heading: RichHeadingSegment[];
+  title: RichHeadingSegment[];
   description: string;
   getInTouchTitle: string;
   getInTouchDescription: string;
@@ -41,10 +41,13 @@ export type LocaleMessages = {
   };
   sections: {
     hero: {
-      title: string;
-      subtitle: string;
-      description: string;
       paragraphs: string[];
+    };
+    hero2: {
+      badge: string;
+      headline: RichHeadingSegment[];
+      description: string;
+      tags: string[];
     };
     about: {
       title: string;
@@ -83,6 +86,7 @@ export type LocaleMessages = {
       academicTitle: string;
       certificationsTitle: string;
       inProgress: string;
+      viewCredential: string;
     };
     contact: ContactSectionMessages;
     footer: {
