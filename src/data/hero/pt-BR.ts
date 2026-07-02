@@ -7,7 +7,7 @@ export const heroContent: HeroContent = {
     typeName: 'Developer',
     fields: {
       nome: 'Yasmin Alves',
-      foco: 'Front-end com foco em produto',
+      foco: 'Front-end',
       stack: ['React', 'TypeScript', 'Next.js'],
       disponivel: true
     }
@@ -15,7 +15,7 @@ export const heroContent: HeroContent = {
   preview: {
     availabilityLabel: 'disponível para projetos',
     name: 'Yasmin Alves',
-    role: 'Desenvolvedora Front-End com foco em produto',
+    role: 'Desenvolvedora Front-End',
     stack: ['React', 'TypeScript', 'Next.js'],
     quote: 'O mesmo objeto do editor, renderizado. É assim que penso interfaces: do dado ao componente.'
   }
