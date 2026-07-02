@@ -37,13 +37,15 @@ export default {
         { kind: 'text', value: 'Transformando ideias em ' },
         { kind: 'emphasis', value: 'código' }
       ],
-      roleLabel: 'Coordenadora de Projetos',
+      intro:
+        'Desenvolvo interfaces com React, JavaScript e TypeScript — da modelagem dos dados à entrega do componente.',
       paragraphs: [
-        'Sou Coordenadora de Projetos com experiência em gestão de equipes, metodologias ágeis e desenvolvimento de soluções tecnológicas. Atuo na conexão entre negócio e tecnologia, liderando projetos de ponta a ponta.',
-        'Tenho background técnico em desenvolvimento web com React, JavaScript e TypeScript, o que me permite ter uma visão completa dos projetos e facilitar a comunicação entre áreas técnicas e de negócio.',
-        'Experiência em projetos de automação (RPA), análise de processos, gestão de squads e mentoria técnica, sempre buscando entregar valor e desenvolver pessoas.',
-        'Atualmente cursando Ciência da Computação e me especializando em IA Generativa e Cloud Computing com certificações Google Cloud e Microsoft Azure.'
+        'Busco escrever código organizado, componentizado e fácil de evoluir, com atenção à experiência de quem usa a aplicação.',
+        'Minha trajetória une desenvolvimento front-end e gestão ágil. Como Scrum Master, facilito cerimônias, organizo backlog e acompanho entregas, sem perder o olhar técnico sobre o que está sendo construído.',
+        'Atuo em projetos reais com impacto real — plataformas web, aplicações mobile e entregas de ponta a ponta —, sempre conectando necessidades de negócio à implementação prática.',
+        'Atualmente cursando Ciência da Computação, com foco nos estudos de mobile e backend.'
       ],
+      imageAlt: 'Yasmin em seu setup de desenvolvimento',
       pillars: [
         {
           title: 'Clean Code',
@@ -62,6 +64,11 @@ export default {
         {
           title: 'Visão de Produto',
           description: 'Atuação próxima às decisões de produto, conectando necessidades do negócio à implementação técnica.'
+        },
+        {
+          title: 'Impacto Real',
+          description:
+            'Experiência construindo soluções usadas no dia a dia — de plataformas clínicas a apps mobile — com foco em gerar valor concreto para quem usa.'
         }
       ]
     },
@@ -90,6 +97,7 @@ export default {
       categoryAll: 'Todos',
       categoryManagement: 'Gestão',
       categoryDevelopment: 'Desenvolvimento',
+      categoryMobile: 'Mobile',
       featuredTitle: 'Projetos em Destaque',
       moreTitle: 'Mais projetos',
       emptyMessage: 'Nenhum projeto encontrado com os filtros selecionados.'
@@ -163,7 +171,8 @@ export default {
     backToHome: 'Voltar ao início',
     mainNavigation: 'Navegação principal',
     closeContactForm: 'Fechar formulário de contato',
-    decorativeHeroVideo: 'Vídeo decorativo de apresentação, sem áudio',
+    decorativeHeroVideo: 'Vídeo decorativo de apresentação',
+    enableHeroVideoSound: 'Ativar som do vídeo',
     openGithub: 'Abrir GitHub',
     openLinkedin: 'Abrir LinkedIn',
     openWhatsapp: 'Abrir WhatsApp',

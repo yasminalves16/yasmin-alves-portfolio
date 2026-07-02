@@ -28,7 +28,8 @@ export function ProjectFilters({
   const categories: { value: ProjectCategoryFilter; label: string }[] = [
     { value: 'all', label: projects.categoryAll },
     { value: 'management', label: projects.categoryManagement },
-    { value: 'development', label: projects.categoryDevelopment }
+    { value: 'development', label: projects.categoryDevelopment },
+    { value: 'mobile', label: projects.categoryMobile }
   ];
 
   return (

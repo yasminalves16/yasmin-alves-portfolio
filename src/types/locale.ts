@@ -52,8 +52,9 @@ export type LocaleMessages = {
     about: {
       title: string;
       headline: RichHeadingSegment[];
-      roleLabel: string;
+      intro: string;
       paragraphs: string[];
+      imageAlt: string;
       pillars: Array<{ title: string; description: string }>;
     };
     experience: {
@@ -70,6 +71,7 @@ export type LocaleMessages = {
       categoryAll: string;
       categoryManagement: string;
       categoryDevelopment: string;
+      categoryMobile: string;
       featuredTitle: string;
       moreTitle: string;
       emptyMessage: string;
@@ -112,6 +114,7 @@ export type LocaleMessages = {
     mainNavigation: string;
     closeContactForm: string;
     decorativeHeroVideo: string;
+    enableHeroVideoSound: string;
     openGithub: string;
     openLinkedin: string;
     openWhatsapp: string;

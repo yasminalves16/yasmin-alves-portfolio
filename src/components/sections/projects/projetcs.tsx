@@ -21,7 +21,7 @@ export function Projects() {
   const { projects: projectsMessages } = sections;
   const githubLink = getSocialLink('github');
 
-  const [category, setCategory] = useState<ProjectCategoryFilter>('all');
+  const [category, setCategory] = useState<ProjectCategoryFilter>('development');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
   const filteredFeatured = useMemo(
@@ -41,7 +41,7 @@ export function Projects() {
   };
 
   const handleClear = () => {
-    setCategory('all');
+    setCategory('development');
     setSelectedTags([]);
   };
 

@@ -74,7 +74,7 @@ export function Contact() {
                   <MapPinHouse size={20} className='shrink-0 text-primary' aria-hidden />
                   {contact.location}
                 </p>
-                <Button onClick={openModal} size='sm' className='mt-12 px-4 py-2.5'>
+                <Button disabled size='sm' className='mt-12 px-4 py-2.5'>
                   <Mail size={16} aria-hidden />
                   {actions.sendMessage}
                   <Send size={16} aria-hidden />

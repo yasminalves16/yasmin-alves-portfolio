@@ -5,7 +5,7 @@ import { EASE_OUT, fadeUp, scaleIn, slideFromLeft, transition } from '@/src/lib/
 import { useMessages } from '@/src/hooks/use-messages';
 import { usePortfolioData } from '@/src/hooks/use-portfolio-data';
 import { motion, useReducedMotion } from 'framer-motion';
-import { FiArrowRight, FiGithub, FiLinkedin } from 'react-icons/fi';
+import { FiGithub, FiLinkedin } from 'react-icons/fi';
 import { MdOutlineFileDownload, MdWhatsapp } from 'react-icons/md';
 import { buttonClassName } from '../ui/button';
 import { Container } from '../ui/container';
@@ -32,7 +32,7 @@ const heroStagger = {
 
 export function Hero() {
   const { profile } = usePortfolioData();
-  const { sections, actions, a11y } = useMessages();
+  const { sections, a11y } = useMessages();
   const prefersReducedMotion = useReducedMotion();
   const [firstName, ...lastNameParts] = profile.name.split(' ');
   const lastName = lastNameParts.join(' ');
@@ -88,7 +88,7 @@ export function Hero() {
               variants={fadeUp}
               transition={transition}
             >
-              &lt; {profile.role} &gt;
+              &lt; {profile.role} /&gt;
             </motion.p>
 
             <motion.div className='space-y-3 text-muted-foreground' variants={fadeUp} transition={transition}>
@@ -98,28 +98,22 @@ export function Hero() {
             </motion.div>
 
             <motion.div
-              className='flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start'
+              className='flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start'
               variants={fadeUp}
               transition={transition}
             >
-              <a href='#projects' className={buttonClassName({ className: 'w-full gap-2 sm:w-auto' })}>
-                {actions.viewProjects}
-                <FiArrowRight size={16} aria-hidden />
-              </a>
-              <div className='hidden flex-col gap-3 sm:flex-row md:flex'>
-                {profile.documents.map((document) => (
-                  <a
-                    key={document.id}
-                    href={document.href}
-                    download={document.filename}
-                    aria-label={`${a11y.downloadDocumentPrefix}: ${document.label}`}
-                    className={buttonClassName({ variant: 'outline', className: 'w-full gap-2 sm:w-auto' })}
-                  >
-                    {document.label}
-                    <MdOutlineFileDownload size={16} aria-hidden />
-                  </a>
-                ))}
-              </div>
+              {profile.documents.map((document) => (
+                <a
+                  key={document.id}
+                  href={document.href}
+                  download={document.filename}
+                  aria-label={`${a11y.downloadDocumentPrefix}: ${document.label}`}
+                  className={buttonClassName({ variant: 'outline', className: 'w-full gap-2 sm:w-auto' })}
+                >
+                  {document.label}
+                  <MdOutlineFileDownload size={16} aria-hidden />
+                </a>
+              ))}
             </motion.div>
 
             <motion.ul

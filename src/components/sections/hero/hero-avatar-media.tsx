@@ -5,7 +5,8 @@ import { useTheme } from '@/src/hooks/use-theme';
 import { cn } from '@/src/lib/utils';
 import type { ThemeId } from '@/src/types/theme';
 import { useInView, useReducedMotion } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { VolumeX } from 'lucide-react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 type AvatarMedia = {
   poster: string;
@@ -48,17 +49,38 @@ export function HeroAvatarMedia() {
   const prefersReducedMotion = useReducedMotion();
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const soundEnabledRef = useRef(false);
 
   const [videoReady, setVideoReady] = useState(false);
   const [videoActive, setVideoActive] = useState(false);
+  const [needsUnmute, setNeedsUnmute] = useState(false);
 
   const media = getAvatarMedia(theme);
-  const isInView = useInView(containerRef, { once: true, amount: 0.4 });
+  const isInView = useInView(containerRef, { amount: 0.35 });
   const showPoster = prefersReducedMotion || !videoActive;
+
+  const enableSound = useCallback(async () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    soundEnabledRef.current = true;
+    video.muted = false;
+    video.volume = 0.85;
+
+    try {
+      await video.play();
+      setVideoActive(true);
+      setNeedsUnmute(false);
+    } catch {
+      setVideoActive(false);
+    }
+  }, []);
 
   useEffect(() => {
     setVideoReady(false);
     setVideoActive(false);
+    setNeedsUnmute(false);
+    soundEnabledRef.current = false;
   }, [media.poster, media.video]);
 
   useEffect(() => {
@@ -77,40 +99,61 @@ export function HeroAvatarMedia() {
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || !isInView || !videoReady || prefersReducedMotion) return;
-
-    video.volume = 0.85;
-
-    const enableSound = () => {
-      video.muted = false;
-      void video.play().catch(() => setVideoActive(false));
-    };
+    if (!video || !videoReady || prefersReducedMotion) return;
 
     const startPlayback = async () => {
-      video.muted = false;
+      video.volume = 0.85;
 
-      try {
-        await video.play();
-        setVideoActive(true);
-        return;
-      } catch {
-        video.muted = true;
+      if (soundEnabledRef.current) {
+        video.muted = false;
+      } else {
+        video.muted = false;
+
+        try {
+          await video.play();
+          setVideoActive(true);
+          setNeedsUnmute(false);
+          return;
+        } catch {
+          video.muted = true;
+          setNeedsUnmute(true);
+        }
       }
 
       try {
         await video.play();
         setVideoActive(true);
-        window.addEventListener('pointerdown', enableSound, { once: true, passive: true });
       } catch {
         setVideoActive(false);
+        setNeedsUnmute(false);
       }
     };
 
-    void startPlayback();
+    if (isInView) {
+      void startPlayback();
+      return;
+    }
 
-    return () => {
-      window.removeEventListener('pointerdown', enableSound);
+    video.pause();
+  }, [isInView, videoReady, prefersReducedMotion]);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !videoReady || prefersReducedMotion) return;
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        video.pause();
+        return;
+      }
+
+      if (isInView) {
+        void video.play().then(() => setVideoActive(true)).catch(() => setVideoActive(false));
+      }
     };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
   }, [isInView, videoReady, prefersReducedMotion]);
 
   return (
@@ -130,6 +173,17 @@ export function HeroAvatarMedia() {
         aria-hidden
         className={cn(mediaClassName, 'z-10 transition-opacity duration-300', showPoster && 'opacity-0')}
       />
+
+      {needsUnmute && videoActive && (
+        <button
+          type='button'
+          onClick={() => void enableSound()}
+          aria-label={a11y.enableHeroVideoSound}
+          className='absolute bottom-4 right-4 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-black/55 text-white backdrop-blur-sm transition-colors hover:bg-black/70'
+        >
+          <VolumeX size={18} aria-hidden />
+        </button>
+      )}
     </div>
   );
 }

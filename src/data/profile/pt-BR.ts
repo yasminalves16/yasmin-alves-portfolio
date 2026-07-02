@@ -4,7 +4,7 @@ export const profile: Profile = {
   name: 'Yasmin Alves',
   age: 26,
   stacks: ['React', 'TypeScript', 'Next.js', 'Scrum', 'RPA'],
-  role: 'Desenvolvedora Front-End com foco em produto',
+  role: 'Desenvolvedora Front-End e Scrum Master',
   tagline:
     'Transformo necessidades de negócio em soluções tecnológicas, conectando pessoas, processos e tecnologia para entregar resultados reais.',
   summary:
