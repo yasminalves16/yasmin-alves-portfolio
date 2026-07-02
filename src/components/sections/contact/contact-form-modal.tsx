@@ -85,7 +85,7 @@ export function ContactFormModal({ closeModal }: { closeModal: () => void }) {
             required
           />
         </div>
-        <Button type='submit' className='w-full'>
+        <Button type='submit' disabled className='w-full'>
           <Send size={16} aria-hidden /> {actions.sendMessage}
         </Button>
       </Form>
