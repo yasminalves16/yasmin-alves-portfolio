@@ -11,6 +11,7 @@ export type ProjectBase = {
   slug: ProjectSlug;
   title: string;
   summary: string;
+  description?: string;
   tags: string[];
   featured: boolean;
   category: ProjectCategory;
@@ -33,4 +34,6 @@ export type ProjectDetail = ProjectBase & {
   description: string;
   features: string[];
   caseStudy: ProjectCaseStudy;
+  /** Imagem ou vídeo (.mp4/.webm) demonstrando o projeto na página de detalhe */
+  demoMedia?: ProjectMedia;
 };
