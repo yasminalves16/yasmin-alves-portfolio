@@ -22,7 +22,7 @@ export default {
       ]
     },
     hero2: {
-      badge: '// como eu construo',
+      badge: 'como eu construo',
       headline: [
         { kind: 'text', value: 'Do dado ao ' },
         { kind: 'emphasis', value: 'componente' }
@@ -73,7 +73,7 @@ export default {
       ]
     },
     experience: {
-      badge: '02 // experiência',
+      badge: 'experiência',
       title: [
         { kind: 'text', value: 'Trajetória ' },
         { kind: 'emphasis', value: 'Profissional' }
@@ -86,7 +86,7 @@ export default {
       swipeHint: 'Deslize para explorar'
     },
     projects: {
-      badge: '03 // projetos',
+      badge: 'projetos',
       title: [
         { kind: 'text', value: 'Projetos em ' },
         { kind: 'emphasis', value: 'destaque' }
@@ -100,19 +100,20 @@ export default {
       categoryMobile: 'Mobile',
       featuredTitle: 'Projetos em Destaque',
       moreTitle: 'Mais projetos',
-      emptyMessage: 'Nenhum projeto encontrado com os filtros selecionados.'
+      emptyMessage: 'Nenhum projeto encontrado com os filtros selecionados.',
+      detailFeaturesTitle: 'Funcionalidades',
+      detailProcessTitle: 'Processo e Aprendizados'
     },
     media: {
-      badge: '04 // mídia',
+      badge: 'mídia',
       title: [
         { kind: 'text', value: 'Reconhecimento na ' },
         { kind: 'emphasis', value: 'Mídia' }
       ],
-      readArticle: 'Ler matéria completa',
-      officialPublication: 'publicação oficial'
+      readArticle: 'Ler matéria completa'
     },
     education: {
-      badge: '05 // formação',
+      badge: 'formação',
       title: [
         { kind: 'text', value: 'Educação e ' },
         { kind: 'emphasis', value: 'Certificações' }
@@ -123,7 +124,7 @@ export default {
       viewCredential: 'Ver credencial'
     },
     contact: {
-      badge: '06 // contato',
+      badge: 'contato',
       title: [
         { kind: 'text', value: 'Vamos trabalhar ' },
         { kind: 'emphasis', value: 'juntos' },
@@ -163,6 +164,8 @@ export default {
     backToTop: 'Voltar ao início',
     clearFilters: 'Limpar Filtros',
     viewMoreOnGithub: 'Ver mais no GitHub',
+    viewOnGithub: 'Ver no GitHub',
+    viewDemo: 'Ver funcionamento',
     heroCode: 'Código',
     heroPreview: 'Preview'
   },

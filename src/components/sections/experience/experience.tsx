@@ -16,7 +16,13 @@ export function Experience() {
   const prefersReducedMotion = useReducedMotion();
   const isDesktop = useIsDesktop();
 
-  const header = <SectionHeader badge={experienceMessages.badge} title={experienceMessages.title} className='mb-8 md:mb-12 lg:mb-20' />;
+  const mobileHeader = (
+    <SectionHeader badge={experienceMessages.badge} title={experienceMessages.title} className='mb-8 md:mb-12 lg:mb-20' />
+  );
+
+  const desktopHeader = (
+    <SectionHeader badge={experienceMessages.badge} title={experienceMessages.title} className='!mb-0' />
+  );
 
   const showDesktopExperience = isDesktop && !prefersReducedMotion;
 
@@ -24,7 +30,7 @@ export function Experience() {
     return (
       <section id='experience'>
         <Container>
-          {header}
+          {mobileHeader}
           <ExperienceMobile entries={experience} focusLabels={experienceMessages.focusLabels} swipeHint={experienceMessages.swipeHint} />
         </Container>
       </section>
@@ -32,8 +38,10 @@ export function Experience() {
   }
 
   return (
-    <section id='experience' className='relative'>
-      <Container>{header}</Container>
+    <section id='experience' className='relative pb-0'>
+      <Container asSection={false} className='pt-16 md:pt-24 pb-0'>
+        {desktopHeader}
+      </Container>
       <ExperienceDesktop entries={experience} focusLabels={experienceMessages.focusLabels} />
     </section>
   );

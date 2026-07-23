@@ -39,7 +39,6 @@ export const projectFilterTechnologies = [
   'PostgreSQL',
   'TailwindCSS',
   'Scrum',
-  'RPA',
   'Google Cloud',
   'Power BI'
 ] as const;

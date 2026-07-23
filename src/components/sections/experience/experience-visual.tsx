@@ -19,8 +19,7 @@ export function ExperienceVisual({ entries, activeIndex, focusLabels }: Experien
         <div
           className='pointer-events-none absolute -inset-8 rounded-full opacity-40 blur-3xl'
           style={{
-            background:
-              'radial-gradient(circle at 50% 50%, color-mix(in oklch, var(--primary) 35%, transparent), transparent 70%)'
+            background: 'radial-gradient(circle at 50% 50%, color-mix(in oklch, var(--primary) 35%, transparent), transparent 70%)'
           }}
           aria-hidden
         />
@@ -45,8 +44,7 @@ export function ExperienceVisual({ entries, activeIndex, focusLabels }: Experien
               className='h-1 rounded-full transition-all duration-500 ease-out'
               style={{
                 width: i === activeIndex ? '2rem' : '0.375rem',
-                backgroundColor:
-                  i === activeIndex ? 'var(--primary)' : 'color-mix(in oklch, var(--muted-foreground) 40%, transparent)'
+                backgroundColor: i === activeIndex ? 'var(--primary)' : 'color-mix(in oklch, var(--muted-foreground) 40%, transparent)'
               }}
             />
           ))}
