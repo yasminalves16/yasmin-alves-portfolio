@@ -22,7 +22,7 @@ export default {
       ]
     },
     hero2: {
-      badge: '// how I build',
+      badge: 'how I build',
       headline: [
         { kind: 'text', value: 'From data to ' },
         { kind: 'emphasis', value: 'component' }
@@ -72,7 +72,7 @@ export default {
       ]
     },
     experience: {
-      badge: '02 // experience',
+      badge: 'experience',
       title: [
         { kind: 'text', value: 'Professional ' },
         { kind: 'emphasis', value: 'Journey' }
@@ -85,7 +85,7 @@ export default {
       swipeHint: 'Swipe to explore'
     },
     projects: {
-      badge: '03 // projects',
+      badge: 'projects',
       title: [
         { kind: 'text', value: 'Featured ' },
         { kind: 'emphasis', value: 'Projects' }
@@ -99,19 +99,20 @@ export default {
       categoryMobile: 'Mobile',
       featuredTitle: 'Featured projects',
       moreTitle: 'More projects',
-      emptyMessage: 'No projects match the selected filters.'
+      emptyMessage: 'No projects match the selected filters.',
+      detailFeaturesTitle: 'Features',
+      detailProcessTitle: 'Process and Learnings'
     },
     media: {
-      badge: '04 // media',
+      badge: 'media',
       title: [
         { kind: 'text', value: 'Media ' },
         { kind: 'emphasis', value: 'Recognition' }
       ],
-      readArticle: 'Read full article',
-      officialPublication: 'official publication'
+      readArticle: 'Read full article'
     },
     education: {
-      badge: '05 // education',
+      badge: 'education',
       title: [
         { kind: 'text', value: 'Education & ' },
         { kind: 'emphasis', value: 'Certifications' }
@@ -122,7 +123,7 @@ export default {
       viewCredential: 'View credential'
     },
     contact: {
-      badge: '06 // contact',
+      badge: 'contact',
       title: [
         { kind: 'text', value: 'Shall we work ' },
         { kind: 'emphasis', value: 'together' },
@@ -162,6 +163,8 @@ export default {
     backToTop: 'Back to top',
     clearFilters: 'Clear filters',
     viewMoreOnGithub: 'See more on GitHub',
+    viewOnGithub: 'View on GitHub',
+    viewDemo: 'View live demo',
     heroCode: 'Code',
     heroPreview: 'Preview'
   },
