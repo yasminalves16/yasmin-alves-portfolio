@@ -47,13 +47,13 @@ export const experience: ExperienceEntry[] = [
     focus: 'gestao',
     headline: 'Conectar negócio e tecnologia.',
     summary:
-      'Atuei como Analista de Negócios em projetos de tecnologia — levantando requisitos, documentando processos e desenvolvendo soluções com Java, Angular, React e PowerApps.',
+      'Atuei como Analista de Negócios e Desenvolvedora em projetos de tecnologia — levantando requisitos, documentando processos e desenvolvendo soluções com Java, Angular, React e PowerApps.',
     bullets: [
-      'Atuação como Analista de Negócios em projetos de tecnologia',
+      'Atuação como Analista de Negócios e Desenvolvedora em projetos de tecnologia',
       'Levantamento e documentação de requisitos de software',
       'Desenvolvimento de soluções utilizando Java, Angular, React e PowerApps'
     ],
-    tags: ['Java', 'Angular', 'React', 'PowerApps', 'SQL', 'RPA']
+    tags: ['Java', 'Angular', 'React', 'PowerApps', 'SQL']
   },
   {
     id: 'fundacao-fat-monitora-ia',
@@ -84,9 +84,9 @@ export const experience: ExperienceEntry[] = [
     focus: 'mentoria',
     headline: 'Mentorar a próxima geração.',
     summary:
-      'Acompanhei alunos em HTML, CSS, JavaScript e Node.js — revisando projetos, conduzindo whiteboards técnicos e reforçando boas práticas de desenvolvimento.',
+      'Acompanhei alunos em HTML, CSS, JavaScript e Node.js — tirando dúvidas, revisando projetos, conduzindo whiteboards técnicos e reforçando boas práticas de desenvolvimento.',
     bullets: [
-      'Suporte técnico a alunos em conteúdos de HTML, CSS, JavaScript e Node.js',
+      'Tirava dúvidas e dava suporte técnico a alunos em HTML, CSS, JavaScript e Node.js',
       'Revisão de projetos com foco em clean code e boas práticas de desenvolvimento',
       'Condução de whiteboards técnicos para avaliação de aprendizado'
     ],

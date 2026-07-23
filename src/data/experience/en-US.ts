@@ -47,13 +47,13 @@ export const experience: ExperienceEntry[] = [
     focus: 'gestao',
     headline: 'Bridge business and technology.',
     summary:
-      'I worked as a Business Analyst on technology projects — gathering requirements, documenting processes and building solutions with Java, Angular, React and PowerApps.',
+      'I worked as a Business Analyst and Developer on technology projects — gathering requirements, documenting processes and building solutions with Java, Angular, React and PowerApps.',
     bullets: [
-      'Acting as Business Analyst on technology projects',
+      'Acting as Business Analyst and Developer on technology projects',
       'Requirements gathering and software documentation',
       'Solution development using Java, Angular, React and PowerApps'
     ],
-    tags: ['Java', 'Angular', 'React', 'PowerApps', 'SQL', 'RPA']
+    tags: ['Java', 'Angular', 'React', 'PowerApps', 'SQL']
   },
   {
     id: 'fundacao-fat-monitora-ia',
@@ -84,9 +84,9 @@ export const experience: ExperienceEntry[] = [
     focus: 'mentoria',
     headline: 'Mentor the next generation.',
     summary:
-      'I guided students through HTML, CSS, JavaScript and Node.js — reviewing projects, running technical whiteboards and reinforcing development best practices.',
+      'I guided students through HTML, CSS, JavaScript and Node.js — answering questions, reviewing projects, running technical whiteboards and reinforcing development best practices.',
     bullets: [
-      'Technical support for students in HTML, CSS, JavaScript and Node.js content',
+      'Answered questions and provided technical support to students in HTML, CSS, JavaScript and Node.js',
       'Project review focused on clean code and development best practices',
       'Conducting technical whiteboards for learning assessment'
     ],
