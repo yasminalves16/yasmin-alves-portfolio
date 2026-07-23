@@ -150,10 +150,6 @@ export const projects: ProjectDetail[] = [
     tags: ['Project Management', 'Leadership', 'Design Thinking', 'Mentorship'],
     category: 'management',
     featured: false,
-    cover: {
-      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cKwE25f9O5k5VYU2Ak4vnJzq0sfUNf.png',
-      alt: 'Social and technological innovation hackathon coordination'
-    },
     description:
       'Complete coordination of a social innovation hackathon, from strategic planning to event execution.\n\nResponsible for defining challenges, recruiting mentors, organizing teams, and monitoring projects developed during the event.',
     features: [
@@ -192,10 +188,6 @@ export const projects: ProjectDetail[] = [
     tags: ['Mentorship', 'Scrum', 'Soft Skills', 'IT Career'],
     category: 'management',
     featured: false,
-    cover: {
-      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-CWQQ9lE6ZJITPb5CXVaAL3t1bQmMCw.png',
-      alt: 'Youth technology mentorship project in partnership with Embraer'
-    },
     description:
       'Active participation in a technology mentorship program for youth, in partnership with Embraer.\n\nActing as a technical mentor, helping develop skills and career guidance for the technology sector.',
     features: [
@@ -233,10 +225,6 @@ export const projects: ProjectDetail[] = [
     tags: ['Google Cloud', 'Generative AI', 'Vertex AI', 'Python', 'Education'],
     category: 'management',
     featured: false,
-    cover: {
-      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-qJMTlVYpEyZEmFXQWiCJWzuA95gHpZ.png',
-      alt: 'Free Qualifica SP technical training in partnership with Google Cloud'
-    },
     description:
       'Acting as Monitor in the free technical training program Qualifica SP in partnership with Google Cloud.\n\nResponsible for technical support to students in Generative AI and Google Cloud Platform content.',
     features: [
@@ -273,10 +261,6 @@ export const projects: ProjectDetail[] = [
     tags: ['Scrum', 'Azure DevOps', 'React', 'TypeScript', 'Kanban'],
     category: 'management',
     featured: false,
-    cover: {
-      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-VZ6Ur1EljPkQ3u0GYRLGxpOkI5CRs2.png',
-      alt: 'Squad management at educational technology company'
-    },
     description:
       'Development squad management at an educational technology company, acting as Scrum Master and developer.\n\nResponsible for facilitating agile ceremonies, monitoring deliveries, and developing features.',
     features: [
@@ -311,19 +295,15 @@ export const projects: ProjectDetail[] = [
     slug: 'projeto-reducao-custos',
     title: 'Corporate Cost Reduction Project Coordination',
     summary: 'Leadership of automation project for operational cost reduction at Embraer.',
-    tags: ['RPA', 'Excel/VBA', 'Power BI', 'Process Analysis'],
+    tags: ['Excel/VBA', 'Power BI', 'PowerApps', 'Process Analysis'],
     category: 'management',
     featured: false,
-    cover: {
-      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-WaQGYKSIgMJp0Qa0pDIvnW3R1FmChV.png',
-      alt: 'Corporate cost reduction project coordination at Embraer'
-    },
     description:
-      'Coordination of a project focused on corporate cost reduction through automation and process optimization.\n\nActing in process analysis, opportunity identification, and implementation of automated solutions.',
+      'Coordination of a corporate cost reduction project at Embraer, acting as Business Analyst and Developer.\n\nResponsible for process analysis, opportunity identification, and development of automated solutions with Excel/VBA, Power BI and PowerApps.',
     features: [
       'Process mapping',
       'Cost analysis',
-      'RPA automation',
+      'Process automation',
       'Analytics dashboards',
       'Executive reports',
       'Stakeholder management'
@@ -343,23 +323,19 @@ export const projects: ProjectDetail[] = [
       },
       learnings: {
         title: caseStudyTitles.learnings,
-        items: ['Process analysis', 'Automation (RPA)', 'Business Intelligence', 'Change management']
+        items: ['Process analysis', 'Process automation', 'Business Intelligence', 'Change management']
       }
     }
   },
   {
     slug: 'gestao-backup-rpa',
-    title: 'Backup Project Management with RPA Automation',
+    title: 'Backup Project Management with Automation',
     summary: 'Implementation of automated solutions for corporate backup management.',
-    tags: ['RPA', 'Automation', 'Trello', 'Project Management'],
+    tags: ['Automation', 'Trello', 'Project Management', 'Excel/VBA'],
     category: 'management',
     featured: false,
-    cover: {
-      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ddm4LGLT59rWL3DRDKt2fZnNwJcS9S.png',
-      alt: 'Backup project management with RPA automation'
-    },
     description:
-      'Management of backup process automation project using RPA and automation tools.\n\nDevelopment of robots for automating repetitive tasks and process monitoring.',
+      'Management of backup process automation project at Embraer, acting as Business Analyst and Developer.\n\nDevelopment of automated flows for repetitive tasks and monitoring of critical processes.',
     features: [
       'Backup automation',
       'Real-time monitoring',
@@ -383,7 +359,7 @@ export const projects: ProjectDetail[] = [
       },
       learnings: {
         title: caseStudyTitles.learnings,
-        items: ['Advanced RPA', 'Risk management', 'Technical documentation', 'Process monitoring']
+        items: ['Process automation', 'Risk management', 'Technical documentation', 'Process monitoring']
       }
     }
   },
