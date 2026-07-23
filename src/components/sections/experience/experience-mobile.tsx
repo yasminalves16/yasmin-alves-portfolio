@@ -100,7 +100,7 @@ export function ExperienceMobile({ entries, focusLabels, swipeHint }: Experience
                 </p>
                 <p className='mb-6 shrink-0 text-sm leading-relaxed text-muted-foreground'>{entry.summary}</p>
 
-                <div className='min-h-0 flex-1 overflow-y-auto border-t border-border/60 pt-5'>
+                <div className='scrollbar-subtle min-h-0 flex-1 overflow-y-auto overscroll-y-contain border-t border-border/60 pt-5 pr-1'>
                   <ExperienceCard entry={entry} focusLabel={focusLabels[entry.focus]} compact />
                 </div>
               </div>
