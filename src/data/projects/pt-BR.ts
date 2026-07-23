@@ -160,10 +160,6 @@ export const projects: ProjectDetail[] = [
     tags: ['Gestão de Projetos', 'Liderança', 'Design Thinking', 'Mentoria'],
     category: 'management',
     featured: false,
-    cover: {
-      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cKwE25f9O5k5VYU2Ak4vnJzq0sfUNf.png',
-      alt: 'Coordenação de hackathon de inovação social e tecnológica'
-    },
     description:
       'Coordenação completa de hackathon de inovação social, desde o planejamento estratégico até a execução do evento.\n\nResponsável pela definição de desafios, captação de mentores, organização de equipes e acompanhamento dos projetos desenvolvidos durante o evento.',
     features: [
@@ -202,10 +198,6 @@ export const projects: ProjectDetail[] = [
     tags: ['Mentoria', 'Scrum', 'Soft Skills', 'Carreira em TI'],
     category: 'management',
     featured: false,
-    cover: {
-      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-CWQQ9lE6ZJITPb5CXVaAL3t1bQmMCw.png',
-      alt: 'Projeto de mentoria tecnológica para jovens em parceria com a Embraer'
-    },
     description:
       'Participação ativa em programa de mentoria tecnológica voltado para jovens, em parceria com a Embraer.\n\nAtuação como mentora técnica, auxiliando no desenvolvimento de habilidades e na orientação de carreira para o setor de tecnologia.',
     features: [
@@ -244,10 +236,6 @@ export const projects: ProjectDetail[] = [
     tags: ['Google Cloud', 'IA Generativa', 'Vertex AI', 'Python', 'Educação'],
     category: 'management',
     featured: false,
-    cover: {
-      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-qJMTlVYpEyZEmFXQWiCJWzuA95gHpZ.png',
-      alt: 'Formação técnica gratuita Qualifica SP em parceria com Google Cloud'
-    },
     description:
       'Atuação como Monitora em programa de formação técnica gratuita do Qualifica SP em parceria com o Google Cloud.\n\nResponsável pelo suporte técnico aos alunos em conteúdos de IA Generativa e Google Cloud Platform.',
     features: [
@@ -285,10 +273,6 @@ export const projects: ProjectDetail[] = [
     tags: ['Scrum', 'Azure DevOps', 'React', 'TypeScript', 'Kanban'],
     category: 'management',
     featured: false,
-    cover: {
-      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-VZ6Ur1EljPkQ3u0GYRLGxpOkI5CRs2.png',
-      alt: 'Gestão de squad em empresa de tecnologia educacional'
-    },
     description:
       'Gestão de squad de desenvolvimento em empresa de tecnologia educacional, atuando como Scrum Master e desenvolvedora.\n\nResponsável pela facilitação de cerimônias ágeis, acompanhamento de entregas e desenvolvimento de funcionalidades.',
     features: [
@@ -324,19 +308,15 @@ export const projects: ProjectDetail[] = [
     slug: 'projeto-reducao-custos',
     title: 'Coordenação de Projeto para Redução de Custos Corporativos',
     summary: 'Liderança de projeto de automação para redução de custos operacionais na Embraer.',
-    tags: ['RPA', 'Excel/VBA', 'Power BI', 'Análise de Processos'],
+    tags: ['Excel/VBA', 'Power BI', 'PowerApps', 'Análise de Processos'],
     category: 'management',
     featured: false,
-    cover: {
-      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-WaQGYKSIgMJp0Qa0pDIvnW3R1FmChV.png',
-      alt: 'Coordenação de projeto para redução de custos corporativos na Embraer'
-    },
     description:
-      'Coordenação de projeto focado em redução de custos corporativos através de automação e otimização de processos.\n\nAtuação em análise de processos, identificação de oportunidades e implementação de soluções automatizadas.',
+      'Coordenação de projeto focado em redução de custos corporativos na Embraer, atuando como Analista de Negócios e Desenvolvedora.\n\nResponsável pela análise de processos, identificação de oportunidades e desenvolvimento de soluções automatizadas com Excel/VBA, Power BI e PowerApps.',
     features: [
       'Mapeamento de processos',
       'Análise de custos',
-      'Automação com RPA',
+      'Automação de processos',
       'Dashboards analíticos',
       'Relatórios executivos',
       'Gestão de stakeholders'
@@ -357,23 +337,19 @@ export const projects: ProjectDetail[] = [
       },
       learnings: {
         title: caseStudyTitles.learnings,
-        items: ['Análise de processos', 'Automação (RPA)', 'Business Intelligence', 'Gestão de mudanças']
+        items: ['Análise de processos', 'Automação de processos', 'Business Intelligence', 'Gestão de mudanças']
       }
     }
   },
   {
     slug: 'gestao-backup-rpa',
-    title: 'Gestão de Projetos de Backup com Automação em RPA',
+    title: 'Gestão de Projetos de Backup com Automação',
     summary: 'Implementação de soluções automatizadas para gestão de backups corporativos.',
-    tags: ['RPA', 'Automação', 'Trello', 'Gestão de Projetos'],
+    tags: ['Automação', 'Trello', 'Gestão de Projetos', 'Excel/VBA'],
     category: 'management',
     featured: false,
-    cover: {
-      src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ddm4LGLT59rWL3DRDKt2fZnNwJcS9S.png',
-      alt: 'Gestão de projetos de backup com automação em RPA'
-    },
     description:
-      'Gestão de projeto de automação de processos de backup utilizando RPA e ferramentas de automação.\n\nDesenvolvimento de robôs para automatização de tarefas repetitivas e monitoramento de processos.',
+      'Gestão de projeto de automação de processos de backup na Embraer, atuando como Analista de Negócios e Desenvolvedora.\n\nDesenvolvimento de fluxos automatizados para tarefas repetitivas e monitoramento de processos críticos.',
     features: [
       'Automação de backups',
       'Monitoramento em tempo real',
@@ -397,7 +373,7 @@ export const projects: ProjectDetail[] = [
       },
       learnings: {
         title: caseStudyTitles.learnings,
-        items: ['RPA avançado', 'Gestão de riscos', 'Documentação técnica', 'Monitoramento de processos']
+        items: ['Automação de processos', 'Gestão de riscos', 'Documentação técnica', 'Monitoramento de processos']
       }
     }
   },

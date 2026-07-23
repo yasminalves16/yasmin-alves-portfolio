@@ -1,13 +1,13 @@
 'use client';
 
 import type { ExperienceEntry, ExperienceFocus } from '@/src/types/experience';
-import { motion, useMotionValueEvent, useScroll, useTransform } from 'framer-motion';
+import { useMotionValueEvent, useScroll } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Container } from '../../ui/container';
 import { ExperienceSlide } from './experience-slide';
 import { ExperienceVisual } from './experience-visual';
 
-const SCROLL_HEIGHT_PER_SLIDE = 100;
+const SCROLL_HEIGHT_PER_SLIDE = 150;
 
 type ExperienceDesktopProps = {
   entries: ExperienceEntry[];
@@ -21,11 +21,6 @@ export function ExperienceDesktop({ entries, focusLabels }: ExperienceDesktopPro
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end end']
-  });
-
-  const textY = useTransform(scrollYProgress, (progress) => {
-    const shiftPerSlide = 24;
-    return `calc(${-progress * (entries.length - 1) * shiftPerSlide}vh + 12vh)`;
   });
 
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
@@ -50,7 +45,7 @@ export function ExperienceDesktop({ entries, focusLabels }: ExperienceDesktopPro
                 aria-hidden
               />
 
-              <motion.div className='will-change-transform' style={{ y: textY }}>
+              <div className='relative h-full'>
                 {entries.map((entry, index) => (
                   <ExperienceSlide
                     key={entry.id}
@@ -58,9 +53,10 @@ export function ExperienceDesktop({ entries, focusLabels }: ExperienceDesktopPro
                     index={index}
                     total={entries.length}
                     scrollProgress={scrollYProgress}
+                    isActive={index === activeIndex}
                   />
                 ))}
-              </motion.div>
+              </div>
             </div>
           </div>
         </Container>

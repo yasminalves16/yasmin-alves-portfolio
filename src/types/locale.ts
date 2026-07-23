@@ -75,12 +75,13 @@ export type LocaleMessages = {
       featuredTitle: string;
       moreTitle: string;
       emptyMessage: string;
+      detailFeaturesTitle: string;
+      detailProcessTitle: string;
     };
     media: {
       badge: string;
       title: RichHeadingSegment[];
       readArticle: string;
-      officialPublication: string;
     };
     education: {
       badge: string;
@@ -105,6 +106,8 @@ export type LocaleMessages = {
     backToTop: string;
     clearFilters: string;
     viewMoreOnGithub: string;
+    viewOnGithub: string;
+    viewDemo: string;
     heroCode: string;
     heroPreview: string;
   };

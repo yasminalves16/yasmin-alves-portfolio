@@ -5,63 +5,124 @@ import { SectionHeader } from '@/src/components/motion/section-header';
 import { Stagger, StaggerItem } from '@/src/components/motion/stagger';
 import { useMessages } from '@/src/hooks/use-messages';
 import { usePortfolioData } from '@/src/hooks/use-portfolio-data';
+import { sortCertifications } from '@/src/lib/education';
 import { cn } from '@/src/lib/utils';
 import type { Certification } from '@/src/types/education';
-import { Award, GraduationCap } from 'lucide-react';
+import { Calendar, ExternalLink, GraduationCap } from 'lucide-react';
 import { Container } from '../../ui/container';
 
-const cardClassName =
-  'flex cursor-default items-start gap-4 rounded-xl border border-border bg-background/40 p-4 transition-colors hover:border-primary/30 hover:bg-secondary/40';
+const academicCardClassName =
+  'flex cursor-default items-start gap-4 rounded-xl border border-border bg-card p-4 transition-colors hover:border-primary/30 hover:bg-secondary/40';
+
+const certificationCardClassName =
+  'flex items-center justify-between gap-4 rounded-xl border border-border bg-card p-4 transition-colors hover:border-primary/30 hover:bg-secondary/40';
+
+function PeriodBadge({ period }: { period: string }) {
+  return (
+    <p className='flex shrink-0 items-center gap-1.5 text-xs text-muted-foreground'>
+      <Calendar size={14} className='shrink-0 text-primary/70' aria-hidden />
+      <span className='whitespace-nowrap'>{period}</span>
+    </p>
+  );
+}
 
 function AcademicCard({
   degree,
   institution,
   period,
-  description
+  description,
+  credentialUrl,
+  a11yLabel
 }: {
   degree: string;
   institution: string;
   period: string;
   description: string;
-}) {
-  return (
-    <article className={cardClassName}>
-      <span className='flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary text-primary'>
-        <GraduationCap size={18} aria-hidden />
-      </span>
-      <div className='min-w-0'>
-        <h4 className='text-sm font-medium'>{degree}</h4>
-        <p className='text-sm text-muted-foreground'>{institution}</p>
-        <p className='text-sm text-primary'>{period}</p>
-        <p className='mt-2 text-sm leading-relaxed text-muted-foreground'>{description}</p>
-      </div>
-    </article>
-  );
-}
-
-function CertificationCard({
-  item,
-  a11yLabel,
-  viewCredentialLabel
-}: {
-  item: Certification;
+  credentialUrl?: string;
   a11yLabel: string;
-  viewCredentialLabel: string;
 }) {
   const content = (
     <>
       <span className='flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary text-primary'>
-        <Award size={18} aria-hidden />
+        <GraduationCap size={18} aria-hidden />
       </span>
-      <div className='min-w-0'>
-        <h4 className='text-sm font-medium'>{item.title}</h4>
-        <p className='text-sm text-muted-foreground'>
-          {item.issuer} · {item.period}
-        </p>
-        {item.credentialUrl && (
-          <p className='mt-1 truncate text-sm text-muted-foreground'>{viewCredentialLabel}</p>
-        )}
+      <div className='min-w-0 flex-1'>
+        <div className='flex items-start justify-between gap-3'>
+          <h4 className='text-sm font-medium leading-snug'>{degree}</h4>
+          <div className='flex shrink-0 items-center gap-2'>
+            <PeriodBadge period={period} />
+            {credentialUrl && (
+              <ExternalLink size={16} className='shrink-0 text-muted-foreground' aria-hidden />
+            )}
+          </div>
+        </div>
+        <p className='mt-1 text-sm text-primary'>{institution}</p>
+        <p className='mt-2 text-sm leading-relaxed text-muted-foreground'>{description}</p>
       </div>
+    </>
+  );
+
+  if (credentialUrl) {
+    return (
+      <a
+        href={credentialUrl}
+        target='_blank'
+        rel='noopener noreferrer'
+        aria-label={a11yLabel}
+        className={cn(academicCardClassName, 'cursor-pointer')}
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return <article className={academicCardClassName}>{content}</article>;
+}
+
+function CertificationMeta({
+  issuer,
+  period,
+  workload
+}: {
+  issuer: string;
+  period?: string;
+  workload?: string;
+}) {
+  if (workload) {
+    return (
+      <>
+        <p className='mt-1 text-sm text-primary'>{issuer}</p>
+        <p className='mt-1 text-sm text-muted-foreground'>
+          <span>{workload}</span>
+          {period && (
+            <>
+              <span> · </span>
+              <span>{period}</span>
+            </>
+          )}
+        </p>
+      </>
+    );
+  }
+
+  return (
+    <p className='mt-1 text-sm'>
+      <span className='text-primary'>{issuer}</span>
+      {period && <span className='text-muted-foreground'> · {period}</span>}
+    </p>
+  );
+}
+
+function CertificationCard({ item, a11yLabel }: { item: Certification; a11yLabel: string }) {
+  const content = (
+    <>
+      <div className='min-w-0 flex-1'>
+        <h4 className='text-sm font-semibold leading-snug text-primary'>{item.title}</h4>
+        <CertificationMeta issuer={item.issuer} period={item.period} workload={item.workload} />
+      </div>
+      {item.credentialUrl && (
+        <ExternalLink size={16} className='shrink-0 text-muted-foreground' aria-hidden />
+      )}
     </>
   );
 
@@ -72,20 +133,21 @@ function CertificationCard({
         target='_blank'
         rel='noopener noreferrer'
         aria-label={a11yLabel}
-        className={cn(cardClassName, 'cursor-pointer items-center')}
+        className={cn(certificationCardClassName, 'cursor-pointer')}
       >
         {content}
       </a>
     );
   }
 
-  return <article className={cn(cardClassName, 'items-center')}>{content}</article>;
+  return <article className={certificationCardClassName}>{content}</article>;
 }
 
 export function Education() {
   const { education } = usePortfolioData();
   const { sections, a11y } = useMessages();
   const { education: educationMessages } = sections;
+  const certifications = sortCertifications(education.certifications);
 
   return (
     <section id='education'>
@@ -104,6 +166,8 @@ export function Education() {
                       institution={item.institution}
                       period={item.period}
                       description={item.description}
+                      credentialUrl={item.credentialUrl}
+                      a11yLabel={a11y.externalCredential}
                     />
                   </StaggerItem>
                 ))}
@@ -115,13 +179,9 @@ export function Education() {
             <section>
               <h3 className='mb-6 text-xl font-semibold'>{educationMessages.certificationsTitle}</h3>
               <Stagger as='ul' className='space-y-3'>
-                {education.certifications.map((item) => (
+                {certifications.map((item) => (
                   <StaggerItem key={item.id} as='li'>
-                    <CertificationCard
-                      item={item}
-                      a11yLabel={a11y.externalCredential}
-                      viewCredentialLabel={educationMessages.viewCredential}
-                    />
+                    <CertificationCard item={item} a11yLabel={a11y.externalCredential} />
                   </StaggerItem>
                 ))}
               </Stagger>

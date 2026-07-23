@@ -3,7 +3,7 @@ import type { Profile } from '../../types/profile';
 export const profile: Profile = {
   name: 'Yasmin Alves',
   age: 26,
-  stacks: ['React', 'TypeScript', 'Next.js', 'Scrum', 'RPA'],
+  stacks: ['React', 'TypeScript', 'Next.js', 'Scrum'],
   role: 'Desenvolvedora Front-End e Scrum Master',
   tagline:
     'Transformo necessidades de negócio em soluções tecnológicas, conectando pessoas, processos e tecnologia para entregar resultados reais.',

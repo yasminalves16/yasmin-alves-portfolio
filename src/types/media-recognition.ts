@@ -6,6 +6,7 @@ export type MediaRecognition = {
   description: string;
   tags: string[];
   articleUrl: string;
+  articleDisabled?: boolean;
   cover?: {
     src: string;
     alt: string;
