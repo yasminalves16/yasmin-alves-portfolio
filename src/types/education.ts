@@ -11,8 +11,11 @@ export type Certification = {
   id: string;
   title: string;
   issuer: string;
-  period: string;
+  period?: string;
+  workload?: string;
   credentialUrl?: string;
+  kind?: 'certification' | 'course';
+  completedAt?: string;
 };
 
 export type EducationContent = {
